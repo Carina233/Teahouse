@@ -1,0 +1,4 @@
+repository "Teahouse@carina233@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
