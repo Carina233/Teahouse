@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         //rb = GetComponent<Rigidbody2D>();
         //anim = GetComponent<Animator>();
+        layerCheckDistance = 0.5f;
     }
 
     void Update()
@@ -88,6 +89,22 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
+    /// 移动检测,如果true无障碍可继续移动
+    /// </summary>
+    /// <param name="dir"></param>
+    /// <returns></returns>
+    bool MoveCheck(Vector2 dir)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, layerCheckDistance, checkLayer);
+        if (!hit)
+        {
+            Debug.Log("物体transform.position:"+ transform.position+"朝向dir:"+dir+ "，检测的碰撞物为checkLayer:"+ checkLayer+"但还可以走");
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
     /// 向某方向移动单位长度
     /// </summary>
     /// <param name="dir"></param>
@@ -99,10 +116,12 @@ public class PlayerController : MonoBehaviour
 
         Vector2 targetPos = transform.position + (Vector3)dir * moveStep;
 
-        while (Vector3.Distance(transform.position, targetPos) > 0.005f)
+        while (MoveCheck(dir)&&Vector3.Distance(transform.position, targetPos) > 0.005f)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-            yield return null;
+            //TODO:遇到碰撞物以后玩家位置会有一点点偏移，大概0.01-0.03
+           yield return null;
+            
         }
 
         isMoving = false;
