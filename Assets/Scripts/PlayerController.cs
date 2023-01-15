@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
        
         Move();
         controlFood();
+        controlWarehouse();
     }
 
     /// <summary>
@@ -96,6 +97,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("aba?");
             isMoving = false;
             StartCoroutine(MoveToDir(moveDir));
+            transform.position = new Vector3(Mathf.Floor(transform.position.x) + 0.5f, Mathf.Floor(transform.position.y) + 0.5f, 0);
         }
         
 
@@ -171,6 +173,34 @@ public class PlayerController : MonoBehaviour
         //((AudioSource)this.gameObject.GetComponent(typeof(AudioSource))).Play();
     }
 
+    /// <summary>
+    /// 从仓库取物
+    /// </summary>
+    public void controlWarehouse()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+            //手上有没有东西
+            GameObject food = foodCheck(moveDir);
+            if (food||foodCheck(moveDir))
+            {
+                return;
+            }
+
+            GameObject placeType = placeCheck(moveDir);
+            if(!placeType)
+            {
+                return;
+            }
+            if (placeType.name=="Warehouse")
+            {
+                placeType.GetComponent<DeviceManager>().requirement = 1;
+                placeType.GetComponent<DeviceManager>().requirementOwner = gameObject;
+            }
+        }
+    }
+
 
     /// <summary>
     /// 拿起/放下食物
@@ -193,20 +223,27 @@ public class PlayerController : MonoBehaviour
                 Transform outPutCheck = GameObject.Find("OutputCheck").transform;
 
                 // int layer = LayerMask.NameToLayer("Table");//根据名称获取层级
+                if(!placeType)
+                {
+                    return;
+                }
                 switch (LayerMask.LayerToName(placeType.layer))//根据层级获取名称
                 {
            
                     case "Table"://普通放置
-                        foodInHand.transform.SetParent(table);
+                        foodInHand.transform.SetParent(placeType.transform);
+                        foodInHand.transform.position = placeType.transform.position;
                         break;
                     case "Device"://放到烹饪工具中
-                        foodInHand.transform.SetParent(device);
+                        foodInHand.transform.SetParent(placeType.transform);
+                        foodInHand.transform.position = placeType.transform.position;
                         break;
                     case "OutputCheck"://放到出菜口
-                        foodInHand.transform.SetParent(outPutCheck);
+                        foodInHand.transform.SetParent(placeType.transform);
+                        foodInHand.transform.position = placeType.transform.position;
                         break;
                     default:
-                        foodInHand.transform.SetParent(foodMap);
+                        foodInHand.transform.SetParent(placeType.transform);
                         break;
                 }
               
