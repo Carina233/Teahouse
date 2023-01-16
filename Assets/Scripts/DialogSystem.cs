@@ -16,7 +16,7 @@ public class DialogSystem : MonoBehaviour
 
     List<string> textList = new List<string>();
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         GetTextFromFile(textFile);
     }
@@ -36,6 +36,12 @@ public class DialogSystem : MonoBehaviour
             index++;
         }
         
+    }
+
+    private void OnEnable()
+    {
+        textLabel.text = textList[index];
+        index++;
     }
 
     void GetTextFromFile(TextAsset file)
