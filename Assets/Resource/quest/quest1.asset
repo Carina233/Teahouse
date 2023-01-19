@@ -16,6 +16,7 @@ MonoBehaviour:
   npcID: 
   title: "\u4EFB\u52A11"
   description: "\u597D\u5403\u597D\u5403\u597D\u5403"
+  maxTime: 10
   questState:
     IsOngoing: 0
     IsFailed: 0

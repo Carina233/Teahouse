@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 [CreateAssetMenu(fileName = "quest", menuName = "quest/newquest")]
@@ -47,6 +48,15 @@ public class Quest : ScriptableObject
     }
 
 
+    [SerializeField]
+    private int maxTime;//×öÒ»¸ö¼¦µ°³¦·Û
+    public int _maxTime
+    {
+        get
+        {
+            return maxTime;
+        }
+    }
 
 
 

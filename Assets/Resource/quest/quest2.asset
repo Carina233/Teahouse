@@ -16,6 +16,7 @@ MonoBehaviour:
   npcID: 
   title: 222
   description: 222222222222
+  maxTime: 20
   questState:
     IsOngoing: 0
     IsFailed: 0
