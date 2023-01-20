@@ -5307,6 +5307,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5086310452619385768, guid: 743910205bf75ae40bbc62555fc5a8ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+    - target: {fileID: 5086310452619385768, guid: 743910205bf75ae40bbc62555fc5a8ec, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 743910205bf75ae40bbc62555fc5a8ec, type: 3}
 --- !u!1001 &1392157562
@@ -6444,7 +6452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1748941537
 Transform:
   m_ObjectHideFlags: 0
@@ -7380,13 +7388,13 @@ MonoBehaviour:
   rb: {fileID: 0}
   checkLayer_collider:
     serializedVersion: 2
-    m_Bits: 448
+    m_Bits: 832
   checkLayer_food:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 128
   checkLayer_place:
     serializedVersion: 2
-    m_Bits: 1408
+    m_Bits: 1792
   real: {fileID: 699824667}
   tableLayer:
     serializedVersion: 2
@@ -7411,7 +7419,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &2038613471
 BoxCollider2D:

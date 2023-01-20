@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class OutputCheck : MonoBehaviour
 {
+    private GameObject qm;
     // Start is called before the first frame update
     void Start()
     {
-        
+        qm = GameObject.Find("QuestManager");
+
     }
 
     // Update is called once per frame
@@ -29,7 +31,9 @@ public class OutputCheck : MonoBehaviour
         {
             
             Debug.Log("²ËÆ·name:" + child.name);
-            Destroy(child.gameObject);
+            qm.GetComponent<QuestManager>().checkQuest(child.gameObject);
+
+            //Destroy(child.gameObject);
         }
 
 

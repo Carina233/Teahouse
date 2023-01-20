@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float moveStep;//角色移动步数
     public Rigidbody2D rb;//角色Rigidbody
     Vector2 moveDir; //移动方向（即将移动）
-    bool isMoving;//角色是否在移动
+    
 
     Animator anim;//角色动画
  
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         //rb = GetComponent<Rigidbody2D>();
         //anim = GetComponent<Animator>();
-        isMoving = false;
+        
         moveDir = Vector3.zero;
         layerCheckDistance_collider = 0.5f;
         layerCheckDistance_place = 1.0f;
@@ -53,59 +53,56 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Move()
     {
-        Debug.Log("??");
+        
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            isMoving = true;
+            
             moveDir = Vector2.right;
             playStepSound();
             setWalkAnim(moveDir);
-            Debug.Log("right");
+            //Debug.Log("right");
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            isMoving = true;
+          
             moveDir = Vector2.left;
             playStepSound();
             setWalkAnim(moveDir);
-            Debug.Log("left");
+            //Debug.Log("left");
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            isMoving = true;
+           
             moveDir = Vector2.up;
             playStepSound();
             setWalkAnim(moveDir);
-            Debug.Log("up");
+            //Debug.Log("up");
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Debug.Log("down");
-            isMoving = true;
+            //Debug.Log("down");
+            
             moveDir = Vector2.down;
             playStepSound();
             setWalkAnim(moveDir);
         }
 
-
-        MoveCheck(moveDir);
-        if (isMoving)
-        {
-            Debug.Log("aba?");
-            isMoving = false;
-            StartCoroutine(MoveToDir(moveDir));
-            transform.position = new Vector3(Mathf.Floor(transform.position.x) + 0.5f, Mathf.Floor(transform.position.y) + 0.5f, 0);
-        }
         
+        
+        if(!MoveCheck(moveDir))
+        {
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
 
-       
+            Vector2 position = transform.position;
+            position.x = position.x + moveSpeed * horizontal * Time.deltaTime;
+            position.y = position.y + moveSpeed * vertical * Time.deltaTime;
 
-
-
-
+            transform.position = position;
+        }
     }
 
     
@@ -121,7 +118,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     /// <param name="dir"></param>
     /// <returns></returns>
-    GameObject MoveCheck(Vector2 dir)
+    private GameObject MoveCheck(Vector2 dir)
     {
         //搬运过来的Tooltip
         //[Tooltip("检测能否移动的相距碰撞层距离")] float layerCheckDistance; // 检测是否能移动的相距碰撞层距离
@@ -130,40 +127,25 @@ public class PlayerController : MonoBehaviour
         //为TileMap Wall新建一个Layer Wall，然后checkLayer中选中Wall，代表检测的目标是墙壁
         //checkLayer_collider只选定Layermask层内的碰撞器，其它层内碰撞器忽略
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, layerCheckDistance_collider, checkLayer_collider);//射线检测
-        Debug.Log(dir+"hit"+ hit.collider);
+        //Debug.Log(dir+"hit"+ hit.collider);
         if (!hit)
         {
-            Debug.Log(dir+"啥也没有");
+            //Debug.Log(dir + "啥也没有");
             //Debug.Log("物体transform.position:"+ transform.position+"朝向dir:"+dir+ "，检测的碰撞物为checkLayer:"+ checkLayer_collider + "但还可以走");
             return null;
         }
-        Debug.Log("hit.collider.gameObject" + hit.collider.gameObject);
-        return hit.collider.gameObject;
+        else
+        {
+            Debug.Log("hit.collider.gameObject" + hit.collider.gameObject);
+            return hit.collider.gameObject;
+        }
+
     }
     /// <summary>
     /// 向某方向移动单位长度
     /// </summary>
     /// <param name="dir"></param>
-    IEnumerator MoveToDir(Vector2 dir)
-    {
-        // transform.Translate(dir);
-        //isMoving = true;
-        Debug.Log("isMoving:"+ isMoving);
-
-        Vector2 targetPos = transform.position + (Vector3)dir * moveStep;
-
-        while (!MoveCheck(dir)&&Vector3.Distance(transform.position, targetPos) > 0.005f)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-            //TODO:遇到碰撞物以后玩家位置会有一点点偏移，大概0.01-0.03
-           yield return null;
-        }
-        isMoving = false;
-
-        
-        //anim.SetFloat("Walk", 0);
-
-    }
+    
 
     ///
     /// 播放音乐
@@ -183,7 +165,7 @@ public class PlayerController : MonoBehaviour
 
             //手上有没有东西
             GameObject food = foodCheck(moveDir);
-            if (food||foodCheck(moveDir))
+            if (food||checkHand())
             {
                 return;
             }
@@ -197,6 +179,7 @@ public class PlayerController : MonoBehaviour
             {
                 placeType.GetComponent<DeviceManager>().requirement = 1;
                 placeType.GetComponent<DeviceManager>().requirementOwner = gameObject;
+
             }
         }
     }
@@ -222,6 +205,8 @@ public class PlayerController : MonoBehaviour
                 Transform device = GameObject.Find("Device").transform;
                 Transform outPutCheck = GameObject.Find("OutputCheck").transform;
 
+             
+
                 // int layer = LayerMask.NameToLayer("Table");//根据名称获取层级
                 if(!placeType)
                 {
@@ -233,19 +218,21 @@ public class PlayerController : MonoBehaviour
                     case "Table"://普通放置
                         foodInHand.transform.SetParent(placeType.transform);
                         foodInHand.transform.position = placeType.transform.position;
+                        foodInHand.layer = LayerMask.NameToLayer("Food");
                         break;
                     case "Device"://放到烹饪工具中
                         foodInHand.transform.SetParent(placeType.transform);
                         foodInHand.transform.position = placeType.transform.position;
+                        foodInHand.layer = LayerMask.NameToLayer("Food");
                         break;
                     case "OutputCheck"://放到出菜口
                         foodInHand.transform.SetParent(placeType.transform);
                         foodInHand.transform.position = placeType.transform.position;
+                        foodInHand.layer = LayerMask.NameToLayer("Food");
                         break;
-                    default:
-                        foodInHand.transform.SetParent(placeType.transform);
-                        break;
+                    
                 }
+                
               
             }
             else//手上没东西
@@ -255,6 +242,8 @@ public class PlayerController : MonoBehaviour
                 {
                     //面前有东西就拿起来
                     food.transform.SetParent(this.transform);
+                    Debug.Log("gameObject.layer" + gameObject.layer);
+                    food.layer = gameObject.layer;
                 }
             }
             
@@ -291,7 +280,7 @@ public class PlayerController : MonoBehaviour
     GameObject placeCheck(Vector2 dir)
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, layerCheckDistance_place, checkLayer_place);//射线检测
-        Debug.Log(dir + "placehit" + hit.collider);
+        //Debug.Log(dir + "placehit" + hit.collider);
         if (!hit)
         {
             Debug.Log(dir + "没有place");
@@ -314,7 +303,7 @@ public class PlayerController : MonoBehaviour
         //[Tooltip("检测影响移动的碰撞层")] public LayerMask checkLayer; // 检测影响移动的碰撞层
         //layerCheckDistance = 0.5f; 意思就是检测角色前面0.5f处有没有碰撞物
         //为TileMap Wall新建一个Layer Wall，然后checkLayer中选中Wall，代表检测的目标是墙壁
-        Debug.Log(dir);
+        //Debug.Log(dir);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, layerCheckDistance_food, checkLayer_food);//射线检测
         if (hit)
         {

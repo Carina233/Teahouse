@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questID: Q0001
   npcID: 
-  title: "\u4EFB\u52A11"
-  description: "\u597D\u5403\u597D\u5403\u597D\u5403"
-  maxTime: 10
+  title: Vita
+  description: VitaVitaVita
+  maxTime: 100
   questState:
     IsOngoing: 0
     IsFailed: 0

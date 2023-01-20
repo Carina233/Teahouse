@@ -7,8 +7,10 @@ using static QuestManager;
 
 public class QuestUI : MonoBehaviour
 {
+    public string foodName;
     public State state;
     public Slider slider;
+    
     public TMP_Text description;
 
     // Start is called before the first frame update

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6368171234430589810}
   - component: {fileID: 6368171234430589809}
   - component: {fileID: 4122012226989162252}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: SoyaBeanMilk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: 654882de1a010a446a38f3ccec25636f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

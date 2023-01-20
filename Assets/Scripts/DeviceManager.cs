@@ -36,7 +36,9 @@ public class DeviceManager : MonoBehaviour
     private void meetRequirement()
     {
         GameObject food = Instantiate(foodType, transform);
+        food.transform.name = foodType.transform.name;
         food.transform.SetParent(requirementOwner.transform);
         food.transform.position = requirementOwner.transform.position;
+        food.layer = requirementOwner.layer;
     }
 }

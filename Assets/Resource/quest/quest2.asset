@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questID: Q0002
   npcID: 
-  title: 222
-  description: 222222222222
-  maxTime: 20
+  title: bbb
+  description: bbbbbb
+  maxTime: 100
   questState:
     IsOngoing: 0
     IsFailed: 0

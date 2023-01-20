@@ -55,6 +55,15 @@ public class QuestManager : MonoBehaviour
         Destroy(go);
 
     }
+    public void turnFinshedState(GameObject go)
+    {
+        go.GetComponent<QuestUI>().state = State.finshed;
+
+        deleteQuest(go.transform.name);
+
+        Destroy(go);
+
+    }
     public void deleteQuest(string objName)
     {
         for(int i=0;i<currentList.Count;i++)
@@ -87,6 +96,9 @@ public class QuestManager : MonoBehaviour
         newQuest.transform.name = "quest" + questNo;
         questNo = questNo + 1;
 
+        newQuest.GetComponent<QuestUI>().foodName=q._title;
+        
+
         Slider slider = newQuest.GetComponent<QuestUI>().slider;
         slider.transform.GetComponent<SliderManager>().setMaxValue(q._maxTime);
 
@@ -96,6 +108,24 @@ public class QuestManager : MonoBehaviour
         newQuest.GetComponent<QuestUI>().state = State.waiting;
 
         return newQuest;
+    }
+
+    public void checkQuest(GameObject go)
+    {
+        for(int i=0;i<currentList.Count;i++)
+        {
+            if(currentList[i].transform.GetComponent<QuestUI>().foodName==go.transform.name)
+            {
+
+                Debug.Log("完成任务"+ currentList[i].name + go.transform.name+ currentList[i].transform.GetComponent<QuestUI>().foodName);
+
+                GameObject quest= GameObject.Find(currentList[i].name);
+                turnFinshedState(quest);
+                
+                Destroy(go);
+                return;
+            }
+        }
     }
 
     public enum State
