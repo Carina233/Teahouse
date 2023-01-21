@@ -24,4 +24,3 @@ MonoBehaviour:
     money: 50
     EXP: 0
   cmpltObjectiveInOrder: 0
-  collectObjectives: []

@@ -39,6 +39,6 @@ public class DeviceManager : MonoBehaviour
         food.transform.name = foodType.transform.name;
         food.transform.SetParent(requirementOwner.transform);
         food.transform.position = requirementOwner.transform.position;
-        food.layer = requirementOwner.layer;
+        
     }
 }

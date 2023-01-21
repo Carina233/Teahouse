@@ -20,8 +20,11 @@ public class PlayerController : MonoBehaviour
     [Tooltip("检测某距离内是否有食物")] float layerCheckDistance_food; // 检测某距离内是否有食物
     [Tooltip("检测的食物类型")] public LayerMask checkLayer_food; // 检测的食物类型
 
-    [Tooltip("检测某距离内是否有位置放东西")] float layerCheckDistance_place; // 检测某距离内是否有食物
-    [Tooltip("检测的位置类型")] public LayerMask checkLayer_place; // 检测的食物类型
+    [Tooltip("检测某距离内是否有位置放东西")] float layerCheckDistance_place; // 检测某距离内是否有位置放东西
+    [Tooltip("检测的位置类型")] public LayerMask checkLayer_place; // 检测的位置类型
+
+    [Tooltip("检测某距离内是否有碟子放东西")] float layerCheckDistance_dish; // 检测某距离内是否有食物
+    [Tooltip("检测的碟子类型")] public LayerMask checkLayer_dish; // 检测的碟子类型
 
     public GameObject real; //真实世界
     public LayerMask tableLayer;
@@ -38,6 +41,7 @@ public class PlayerController : MonoBehaviour
         layerCheckDistance_collider = 0.5f;
         layerCheckDistance_place = 1.0f;
         layerCheckDistance_food = 1.0f;
+        layerCheckDistance_dish = 1.0f;
     }
 
     void Update()
@@ -114,7 +118,7 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// 移动检测,如果true无障碍可继续移动
+    /// 移动检测,如果true无障碍可继续移动，障碍有墙壁装饰，桌子，设备，上菜台
     /// </summary>
     /// <param name="dir"></param>
     /// <returns></returns>
@@ -126,6 +130,7 @@ public class PlayerController : MonoBehaviour
         //layerCheckDistance = 0.5f; 意思就是检测角色前面0.5f处有没有碰撞物
         //为TileMap Wall新建一个Layer Wall，然后checkLayer中选中Wall，代表检测的目标是墙壁
         //checkLayer_collider只选定Layermask层内的碰撞器，其它层内碰撞器忽略
+        
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, layerCheckDistance_collider, checkLayer_collider);//射线检测
         //Debug.Log(dir+"hit"+ hit.collider);
         if (!hit)
@@ -141,15 +146,11 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-    /// <summary>
-    /// 向某方向移动单位长度
-    /// </summary>
-    /// <param name="dir"></param>
-    
 
-    ///
-    /// 播放音乐
-    ///
+
+    /// <summary>
+    /// 播放音效
+    /// </summary>
     public void playStepSound()
     {
         //((AudioSource)this.gameObject.GetComponent(typeof(AudioSource))).Play();
@@ -169,7 +170,7 @@ public class PlayerController : MonoBehaviour
             {
                 return;
             }
-
+            //前面是仓库吗，是的话就向仓库请求取出物品
             GameObject placeType = placeCheck(moveDir);
             if(!placeType)
             {
@@ -179,10 +180,28 @@ public class PlayerController : MonoBehaviour
             {
                 placeType.GetComponent<DeviceManager>().requirement = 1;
                 placeType.GetComponent<DeviceManager>().requirementOwner = gameObject;
-
             }
         }
     }
+    /// <summary>
+    /// 查看是否有碟子/碗
+    /// </summary>
+    public GameObject checkDish(Vector2 dir)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, layerCheckDistance_dish, checkLayer_dish);//射线检测
+        //Debug.Log(dir + "placehit" + hit.collider);
+        if (!hit)
+        {
+            Debug.Log(dir + "没有diezi");
+            //Debug.Log("物体transform.position:"+ transform.position+"朝向dir:"+dir+ "，检测的碰撞物为checkLayer:"+ checkLayer_collider + "但还可以走");
+            return null;
+        }
+        Debug.Log("有碟子:" + hit.collider.gameObject);
+        return hit.collider.gameObject;
+    }
+
+  
+
 
 
     /// <summary>
@@ -192,43 +211,52 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject foodInHand = checkHand();
+            GameObject foodInHand = checkHand(); 
             GameObject placeType = placeCheck(moveDir);
-
+            GameObject dish = checkDish(moveDir);
+            GameObject food = foodCheck(moveDir);
             Debug.Log(moveDir+"placeType"+placeType);
 
 
             if (foodInHand)//手上有东西
             {
-                Transform foodMap = GameObject.Find("FoodMap").transform;
-                Transform table = GameObject.Find("Table").transform;
-                Transform device = GameObject.Find("Device").transform;
-                Transform outPutCheck = GameObject.Find("OutputCheck").transform;
-
-             
-
-                // int layer = LayerMask.NameToLayer("Table");//根据名称获取层级
-                if(!placeType)
+                if (foodInHand.transform.name == "Dish")
+                {
+                    foodInHand.layer = LayerMask.NameToLayer("Dish");
+                }
+              
+                
+                //前面有盘子，放盘子里，再加一个且可以放盘子里的判定
+                if(dish!=null)
+                {
+                    Debug.Log("把东西放到碟子里呀");
+                    foodInHand.transform.SetParent(dish.transform);
+                    foodInHand.transform.position = dish.transform.position;
+                    //foodInHand.layer = LayerMask.NameToLayer("Food");
+                    return;
+                }
+                //前面没有盘子，但是有桌面，放桌面上，再加一个且食物被可以放桌子上的判定
+                if (!placeType)
                 {
                     return;
                 }
                 switch (LayerMask.LayerToName(placeType.layer))//根据层级获取名称
                 {
-           
+
                     case "Table"://普通放置
                         foodInHand.transform.SetParent(placeType.transform);
                         foodInHand.transform.position = placeType.transform.position;
-                        foodInHand.layer = LayerMask.NameToLayer("Food");
+                        //foodInHand.layer = LayerMask.NameToLayer("Food");
                         break;
                     case "Device"://放到烹饪工具中
                         foodInHand.transform.SetParent(placeType.transform);
                         foodInHand.transform.position = placeType.transform.position;
-                        foodInHand.layer = LayerMask.NameToLayer("Food");
+                        //foodInHand.layer = LayerMask.NameToLayer("Food");
                         break;
                     case "OutputCheck"://放到出菜口
                         foodInHand.transform.SetParent(placeType.transform);
                         foodInHand.transform.position = placeType.transform.position;
-                        foodInHand.layer = LayerMask.NameToLayer("Food");
+                        //foodInHand.layer = LayerMask.NameToLayer("Food");
                         break;
                     
                 }
@@ -237,13 +265,21 @@ public class PlayerController : MonoBehaviour
             }
             else//手上没东西
             {
-                GameObject food = foodCheck(moveDir);
+                if (dish)
+                {
+                    //面前有东西就拿起来
+                    dish.transform.SetParent(this.transform);
+                    Debug.Log("gameObject.layer" + gameObject.layer);
+                    dish.layer = gameObject.layer;
+                    return;
+                }
                 if (food)
                 {
                     //面前有东西就拿起来
                     food.transform.SetParent(this.transform);
                     Debug.Log("gameObject.layer" + gameObject.layer);
-                    food.layer = gameObject.layer;
+                    //food.layer = gameObject.layer;
+                    return;
                 }
             }
             

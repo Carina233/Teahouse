@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9018932602710075140}
   - component: {fileID: 9018932602710075141}
   - component: {fileID: 7571824854277393861}
+  - component: {fileID: 1253273412215200138}
   m_Layer: 7
   m_Name: Vita
   m_TagString: Untagged
@@ -111,3 +112,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3031785, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1253273412215200138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9018932602710075143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440bc5d58e58cef4aa4dc053341e3c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodId: 
+  foodName: 
+  foodLayer: 
+  foodImage: {fileID: 0}
+  foodIntroduction: 
+  stackable: 0
+  stackNum: 0
+  place:
+    serializedVersion: 2
+    m_Bits: 0
+  finshCooking: 0
+  serveCorrectly: 0
+  canMakeWhatDishes: []
+  canBeMakeByWhat: []

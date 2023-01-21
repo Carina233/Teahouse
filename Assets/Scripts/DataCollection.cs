@@ -11,16 +11,18 @@ using UnityEngine;
 [System.Serializable]
 public class foodDetail//菜肴明细
 {
-    public int foodId;
+    public string foodId;
     public string foodName;
+    public string foodLayer;
     public Sprite foodImage;
     public string foodIntroduction;
     public bool stackable;//食物是否可叠加
     public int stackNum;//叠加个数
+    public LayerMask place;//可以放在什么地方
     public bool finshCooking;//是否完成烹饪
     public bool serveCorrectly;//是否正确
-    public List<int> canMakeWhatDishes;//可以做成什么菜
-    public List<int> canBeMakeByWhat;//由什么合成
+    public List<string> canMakeWhatDishes;//可以做成什么菜
+    public List<string> canBeMakeByWhat;//由什么合成
 }
 
 [System.Serializable] 

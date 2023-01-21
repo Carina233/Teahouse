@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0613f14d08799c341b1e229c7581a3da, type: 3}
+  m_Name: DishesData
+  m_EditorClassIdentifier: 
+  foodDetailDataList:
+  - foodId: F0001
+    foodName: Vita
+    foodLayer: Food
+    foodImage: {fileID: 21300000, guid: efdc78cee3a388b41bb007d66906bcb4, type: 3}
+    foodIntroduction: Vita
+    stackable: 0
+    stackNum: 0
+    place:
+      serializedVersion: 2
+      m_Bits: 2048
+    finshCooking: 0
+    serveCorrectly: 0
+    canMakeWhatDishes:
+    - F0003
+    canBeMakeByWhat: []
+  - foodId: F0002
+    foodName: SoyaBeanMilk
+    foodLayer: Food
+    foodImage: {fileID: 21300000, guid: 654882de1a010a446a38f3ccec25636f, type: 3}
+    foodIntroduction: Doujiang
+    stackable: 0
+    stackNum: 0
+    place:
+      serializedVersion: 2
+      m_Bits: 2048
+    finshCooking: 0
+    serveCorrectly: 0
+    canMakeWhatDishes:
+    - F0003
+    canBeMakeByWhat: []
+  - foodId: F0003
+    foodName: Vita+Doujiang
+    foodLayer: Food
+    foodImage: {fileID: 21300000, guid: d766e86b0eabe714db5ac89984e32fad, type: 3}
+    foodIntroduction: Vita+Doujiang
+    stackable: 0
+    stackNum: 0
+    place:
+      serializedVersion: 2
+      m_Bits: 2048
+    finshCooking: 0
+    serveCorrectly: 0
+    canMakeWhatDishes:
+    - 
+    canBeMakeByWhat:
+    - F0001
+    - F0002
