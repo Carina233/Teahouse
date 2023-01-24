@@ -6,7 +6,9 @@ public class FoodManager : MonoBehaviour
 {
     private GameObject foodList;
 
+    
     public string foodId;
+    public int calculateNum;
     public string foodName;
     public string foodLayer;
     public Sprite foodImage;
@@ -28,6 +30,7 @@ public class FoodManager : MonoBehaviour
         {
             if(foodName==fd.foodName)
             {
+                calculateNum = fd.calculateNum;
                 foodId = fd.foodId;
                 foodLayer = fd.foodLayer;
                 canMakeWhatDishes = fd.canMakeWhatDishes;

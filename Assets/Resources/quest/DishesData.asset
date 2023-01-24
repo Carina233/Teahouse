@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodDetailDataList:
   - foodId: F0001
+    calculateNum: 1
     foodName: Vita
     foodLayer: Food
     foodImage: {fileID: 21300000, guid: efdc78cee3a388b41bb007d66906bcb4, type: 3}
@@ -25,26 +26,41 @@ MonoBehaviour:
       m_Bits: 2048
     finshCooking: 0
     serveCorrectly: 0
-    canMakeWhatDishes:
-    - F0003
+    canMakeWhatDishes: []
     canBeMakeByWhat: []
   - foodId: F0002
+    calculateNum: 2
     foodName: SoyaBeanMilk
     foodLayer: Food
     foodImage: {fileID: 21300000, guid: 654882de1a010a446a38f3ccec25636f, type: 3}
     foodIntroduction: Doujiang
-    stackable: 0
+    stackable: 1
     stackNum: 0
     place:
       serializedVersion: 2
       m_Bits: 2048
     finshCooking: 0
     serveCorrectly: 0
-    canMakeWhatDishes:
-    - F0003
+    canMakeWhatDishes: []
     canBeMakeByWhat: []
   - foodId: F0003
-    foodName: Vita+Doujiang
+    calculateNum: 3
+    foodName: Egg
+    foodLayer: Food
+    foodImage: {fileID: 21300000, guid: 91e5d969def21c74a941ae357fe5b993, type: 3}
+    foodIntroduction: Egg
+    stackable: 1
+    stackNum: 0
+    place:
+      serializedVersion: 2
+      m_Bits: 2048
+    finshCooking: 0
+    serveCorrectly: 0
+    canMakeWhatDishes: []
+    canBeMakeByWhat: []
+  - foodId: F0004
+    calculateNum: 5
+    foodName: SoyaBeanMilk+Egg
     foodLayer: Food
     foodImage: {fileID: 21300000, guid: d766e86b0eabe714db5ac89984e32fad, type: 3}
     foodIntroduction: Vita+Doujiang
@@ -58,5 +74,5 @@ MonoBehaviour:
     canMakeWhatDishes:
     - 
     canBeMakeByWhat:
-    - F0001
     - F0002
+    - F0003

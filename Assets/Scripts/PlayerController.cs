@@ -226,12 +226,21 @@ public class PlayerController : MonoBehaviour
                 }
               
                 
-                //前面有盘子，放盘子里，再加一个且可以放盘子里的判定
+                //前面有盘子，放盘子里，再加一个且可以放盘子里的判定,单个的物体不能放盘子
                 if(dish!=null)
                 {
+                    if(foodInHand.GetComponent<FoodManager>().stackable == false)
+                    {
+                        return;
+                    }
+                    
                     Debug.Log("把东西放到碟子里呀");
                     foodInHand.transform.SetParent(dish.transform);
                     foodInHand.transform.position = dish.transform.position;
+
+                    dish.transform.GetComponent<DishController>().checkMix = true;
+                    
+
                     //foodInHand.layer = LayerMask.NameToLayer("Food");
                     return;
                 }

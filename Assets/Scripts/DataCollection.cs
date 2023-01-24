@@ -11,7 +11,9 @@ using UnityEngine;
 [System.Serializable]
 public class foodDetail//²ËëÈÃ÷Ï¸
 {
+   
     public string foodId;
+    public int calculateNum;
     public string foodName;
     public string foodLayer;
     public Sprite foodImage;
