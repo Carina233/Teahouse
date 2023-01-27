@@ -21,7 +21,7 @@ public class foodDetail//菜肴明细
     public bool stackable;//食物是否可叠加
     public int stackNum;//叠加个数
     public LayerMask place;//可以放在什么地方
-    public bool finshCooking;//是否完成烹饪
+    public bool canBeCooked;//是否完成烹饪
     public bool serveCorrectly;//是否正确
     public List<string> canMakeWhatDishes;//可以做成什么菜
     public List<string> canBeMakeByWhat;//由什么合成

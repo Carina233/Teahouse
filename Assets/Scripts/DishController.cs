@@ -5,7 +5,7 @@ using UnityEngine;
 public class DishController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public string dishLayer;
+    /*public string dishLayer;
     private List<string> list;
     private List<foodDetail> foodDetailDataList;
     public bool checkMix;
@@ -59,15 +59,13 @@ public class DishController : MonoBehaviour
             return;
         }
 
-        GameObject foodSprite = transform.GetChild(0).gameObject;
+        GameObject foodSprite = transform.gameObject;
 
         SpriteRenderer sr = foodSprite.transform.GetComponent<SpriteRenderer>();
         Sprite sprite = Resources.Load("png/"+ spriteName, typeof(Sprite)) as Sprite;
+       
         sr.sprite = sprite;
         Debug.Log("sr.sprite" + sr.sprite);
 
-
-
-
-    }
+    }*/
 }

@@ -5,6 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
+    private InHandState inHandState;
+    private PlaceState placeState;
     public float moveSpeed;//角色移动速度
     public float moveStep;//角色移动步数
     public Rigidbody2D rb;//角色Rigidbody
@@ -23,8 +25,8 @@ public class PlayerController : MonoBehaviour
     [Tooltip("检测某距离内是否有位置放东西")] float layerCheckDistance_place; // 检测某距离内是否有位置放东西
     [Tooltip("检测的位置类型")] public LayerMask checkLayer_place; // 检测的位置类型
 
-    [Tooltip("检测某距离内是否有碟子放东西")] float layerCheckDistance_dish; // 检测某距离内是否有食物
-    [Tooltip("检测的碟子类型")] public LayerMask checkLayer_dish; // 检测的碟子类型
+    [Tooltip("检测某距离内是否有容器放东西")] float layerCheckDistance_dish; // 检测某距离内是否有容器
+    [Tooltip("检测的容器类型")] public LayerMask checkLayer_dish; // 检测的容器类型
 
     public GameObject real; //真实世界
     public LayerMask tableLayer;
@@ -192,15 +194,41 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(dir + "placehit" + hit.collider);
         if (!hit)
         {
-            Debug.Log(dir + "没有diezi");
+            Debug.Log(dir + "没有容器");
             //Debug.Log("物体transform.position:"+ transform.position+"朝向dir:"+dir+ "，检测的碰撞物为checkLayer:"+ checkLayer_collider + "但还可以走");
             return null;
         }
-        Debug.Log("有碟子:" + hit.collider.gameObject);
+        Debug.Log("有容器:" + hit.collider.gameObject);
         return hit.collider.gameObject;
     }
 
+
+    private enum InHandState {
+    
+        none,
+        EmptyDish,
+        FullDish,
+        EmptyContainer,
+        MixContainer,
+        EmptyCooker,
+        FullCooker,
+        SingleFood,
+        StackableFood,
   
+    
+    }
+
+    private enum PlaceState
+    {
+        none,
+        EmptyDish,
+        FullDish,
+        EmptyCooker,
+        FullCooker,
+        MixContainer,
+        EmptyContainer,
+
+    }
 
 
 
@@ -216,64 +244,69 @@ public class PlayerController : MonoBehaviour
             GameObject dish = checkDish(moveDir);
             GameObject food = foodCheck(moveDir);
             Debug.Log(moveDir+"placeType"+placeType);
-
+            inHandState = InHandState.none;
+            placeState = PlaceState.none;
 
             if (foodInHand)//手上有东西
             {
-                if (foodInHand.transform.name == "Dish")
+               
+                //手上是碟子
+                if (foodInHand.transform.name== "Dish")
                 {
-                    foodInHand.layer = LayerMask.NameToLayer("Dish");
-                }
-              
-                
-                //前面有盘子，放盘子里，再加一个且可以放盘子里的判定,单个的物体不能放盘子
-                if(dish!=null)
-                {
-                    if(foodInHand.GetComponent<FoodManager>().stackable == false)
+                    //是空碟子吗
+                    if(foodInHand.transform.GetChild(0).childCount==0)//是
                     {
-                        return;
+                        inHandState = InHandState.EmptyDish;
                     }
-                    
-                    Debug.Log("把东西放到碟子里呀");
-                    foodInHand.transform.SetParent(dish.transform);
-                    foodInHand.transform.position = dish.transform.position;
-
-                    dish.transform.GetComponent<DishController>().checkMix = true;
-                    
-
-                    //foodInHand.layer = LayerMask.NameToLayer("Food");
-                    return;
+                    else//不是
+                    {
+                        //foodInHand.layer = LayerMask.NameToLayer("Dish");
+                        inHandState = InHandState.FullDish;
+                    }
                 }
-                //前面没有盘子，但是有桌面，放桌面上，再加一个且食物被可以放桌子上的判定
-                if (!placeType)
+                else if (foodInHand.transform.name == "MixingContainer")
                 {
-                    return;
+                    //是空吗
+                    if (foodInHand.transform.GetChild(0).childCount == 0)//是
+                    {
+                        inHandState = InHandState.EmptyContainer;
+                    }
+                    else//不是
+                    {
+                        Debug.Log("我拿着非空混合物容器");
+                        inHandState = InHandState.MixContainer;
+                    }
                 }
-                switch (LayerMask.LayerToName(placeType.layer))//根据层级获取名称
+                else if (foodInHand.transform.name == "Cooker")//是厨具
                 {
-
-                    case "Table"://普通放置
-                        foodInHand.transform.SetParent(placeType.transform);
-                        foodInHand.transform.position = placeType.transform.position;
-                        //foodInHand.layer = LayerMask.NameToLayer("Food");
-                        break;
-                    case "Device"://放到烹饪工具中
-                        foodInHand.transform.SetParent(placeType.transform);
-                        foodInHand.transform.position = placeType.transform.position;
-                        //foodInHand.layer = LayerMask.NameToLayer("Food");
-                        break;
-                    case "OutputCheck"://放到出菜口
-                        foodInHand.transform.SetParent(placeType.transform);
-                        foodInHand.transform.position = placeType.transform.position;
-                        //foodInHand.layer = LayerMask.NameToLayer("Food");
-                        break;
-                    
+                    //是空厨具吗
+                    if (foodInHand.transform.GetChild(0).childCount == 0)//是
+                    {
+                        inHandState = InHandState.EmptyCooker;
+                       
+                    }
+                    else//不是
+                    {
+                        inHandState = InHandState.FullCooker;
+                    }
                 }
-                
-              
+                else if (foodInHand.layer == LayerMask.NameToLayer("Food"))//是食物
+                {
+                    //可混合吗
+                    if (foodInHand.GetComponent<FoodManager>().stackable == false)
+                    {
+                        inHandState = InHandState.SingleFood;
+                    }
+                    else
+                    {
+                        inHandState = InHandState.StackableFood;
+                    }
+                }
             }
             else//手上没东西
             {
+                
+                //先判断容器包括厨具，空，非空都可以拿
                 if (dish)
                 {
                     //面前有东西就拿起来
@@ -282,16 +315,164 @@ public class PlayerController : MonoBehaviour
                     dish.layer = gameObject.layer;
                     return;
                 }
+                //再判断厨具，空厨具，非空厨具都可以拿
+
+                //判断食物
                 if (food)
                 {
                     //面前有东西就拿起来
                     food.transform.SetParent(this.transform);
                     Debug.Log("gameObject.layer" + gameObject.layer);
-                    //food.layer = gameObject.layer;
+                    
                     return;
                 }
             }
-            
+
+            /////////////////////////////
+            //前面有什么地方
+
+            //前面有容器
+            if (dish != null)
+            {
+                //是碟子
+                if (dish.layer == LayerMask.NameToLayer("Dish"))
+                {
+                    //是空碟子吗
+                    if (dish.transform.GetChild(0).childCount == 0)//是
+                    {
+                        placeState = PlaceState.EmptyDish;
+                    }
+                    else//不是
+                    {
+                        placeState = PlaceState.FullDish;
+                        //foodInHand.layer = LayerMask.NameToLayer("Dish");
+                    }
+                }
+
+                /*Debug.Log("把东西放到碟子里呀");
+                foodInHand.transform.SetParent(dish.transform.GetChild(0));
+                foodInHand.transform.position = dish.transform.GetChild(0).position;
+
+                dish.transform.GetChild(0).GetComponent<FoodMixtureController>().checkMix = true;
+
+                return;*/
+
+                //什么东西可以放进空碟子，可以放到碟子的食物，空碟子，非空碟子里面的食物。非空厨具里面的食物。
+                else if (dish.layer == LayerMask.NameToLayer("Cooker"))
+                {
+                    //是空厨具吗
+                    if (dish.transform.GetChild(0).childCount == 0)//是
+                    {
+
+                        Debug.Log("前方有空厨具");
+                        placeState = PlaceState.EmptyCooker;
+                    }
+                    else//不是
+                    {
+                        placeState = PlaceState.FullCooker;
+                    }
+                    //什么东西可以放进空厨具，非空碟子里面的食物。非空厨具里面的食物。
+
+                }
+                else if (dish.layer == LayerMask.NameToLayer("MixingContainer"))
+                {
+                    //是空混合容器吗
+                    if (dish.transform.GetChild(0).childCount == 0)//是
+                    {
+                        placeState = PlaceState.EmptyContainer;
+                    }
+                    else//不是
+                    {
+                        placeState = PlaceState.MixContainer;
+                    }
+                   
+
+                }
+
+            }
+           
+
+            //前面啥地儿也没有，滚
+            else if (!placeType)
+            {
+                return;
+            }
+            //啥地儿
+            else
+            {
+                switch (LayerMask.LayerToName(placeType.layer))//根据层级获取名称
+                {
+
+                    case "Table"://普通放置桌子
+                        foodInHand.transform.SetParent(placeType.transform);
+                        foodInHand.transform.position = placeType.transform.position;
+                        if(foodInHand.layer==LayerMask.NameToLayer("Default"))
+                        {
+                            foodInHand.layer = LayerMask.NameToLayer(foodInHand.transform.name);
+                        }
+                        break;
+                    case "Device"://无厨具厨具桌
+                        break;
+                    case "OutputCheck"://放到出菜口
+                        foodInHand.transform.SetParent(placeType.transform);
+                        foodInHand.transform.position = placeType.transform.position;
+                        break;
+                }
+            }
+
+            ////////根据当前拿的东西（碟子/食物/厨具/混合容器）和面前的东西（碟子，厨具，混合容器）进行处理
+
+            //拿的是空碟子，可以装起面前厨具里煮熟的食物，厨具变空
+            //拿的是非空碟子。可以倒进垃圾桶变空（拿回空碟子），或者上菜（销毁）
+
+            if(inHandState.Equals(InHandState.EmptyDish)&&placeState.Equals(PlaceState.FullCooker))
+            {
+                //如果煮熟了
+                for(int i = dish.transform.GetChild(0).childCount - 1; i >= 0; i--)
+                {
+                    dish.transform.GetChild(0).GetChild(i).position = foodInHand.transform.position;
+                    dish.transform.GetChild(0).GetChild(i).SetParent(foodInHand.transform.GetChild(0));
+                    
+                }
+               
+            }
+
+
+            //拿的是空混合物容器。
+            //拿的是混合物容器。可以倒进垃圾桶变空（拿回空容器），或者倒进空厨具（拿回空容器，厨具变非空）
+            else if (inHandState.Equals(InHandState.MixContainer) && placeState.Equals(PlaceState.EmptyCooker))
+            {
+                //Debug.Log("混合物倒进空厨具");
+                for (int i = foodInHand.transform.GetChild(0).childCount-1; i >=0; i--)
+                {
+                    foodInHand.transform.GetChild(0).GetChild(i).position = dish.transform.position;
+                    foodInHand.transform.GetChild(0).GetChild(i).SetParent(dish.transform.GetChild(0).transform);
+
+                }
+            }
+
+            //拿的是单食物。
+            //拿的是可混合食物材料。可以放到混合物容器。
+            //拿的是需要煮的食物
+            else if (inHandState.Equals(InHandState.StackableFood) && (placeState.Equals(PlaceState.EmptyContainer)|| placeState.Equals(PlaceState.MixContainer)))
+            {
+                foodInHand.transform.SetParent(dish.transform.GetChild(0));
+                foodInHand.transform.position = dish.transform.GetChild(0).position;
+            }
+
+            //拿的是空厨具。
+            //拿的是非空厨具，可以把厨具里的食物放到面前空碟子（厨具 变空）。倒进垃圾桶。
+            else if (inHandState.Equals(InHandState.FullCooker) && placeState.Equals(PlaceState.EmptyDish))
+            {
+                for (int i = foodInHand.transform.GetChild(0).childCount - 1; i >= 0; i--)
+                {
+                    foodInHand.transform.GetChild(0).GetChild(i).position = dish.transform.position;
+                    foodInHand.transform.GetChild(0).GetChild(i).SetParent(dish.transform.GetChild(0));
+                }
+            }
+
+
+
         }
     }
 

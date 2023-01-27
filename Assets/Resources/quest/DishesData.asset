@@ -24,7 +24,7 @@ MonoBehaviour:
     place:
       serializedVersion: 2
       m_Bits: 2048
-    finshCooking: 0
+    canBeCooked: 0
     serveCorrectly: 0
     canMakeWhatDishes: []
     canBeMakeByWhat: []
@@ -39,7 +39,7 @@ MonoBehaviour:
     place:
       serializedVersion: 2
       m_Bits: 2048
-    finshCooking: 0
+    canBeCooked: 1
     serveCorrectly: 0
     canMakeWhatDishes: []
     canBeMakeByWhat: []
@@ -54,7 +54,7 @@ MonoBehaviour:
     place:
       serializedVersion: 2
       m_Bits: 2048
-    finshCooking: 0
+    canBeCooked: 1
     serveCorrectly: 0
     canMakeWhatDishes: []
     canBeMakeByWhat: []
@@ -69,7 +69,7 @@ MonoBehaviour:
     place:
       serializedVersion: 2
       m_Bits: 2048
-    finshCooking: 0
+    canBeCooked: 0
     serveCorrectly: 0
     canMakeWhatDishes:
     - 

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DeviceManager : MonoBehaviour
 {
+    public string deviceName;
     public int requirement;
     public GameObject requirementOwner;
     public GameObject foodType;
@@ -12,12 +13,17 @@ public class DeviceManager : MonoBehaviour
     void Start()
     {
         requirement = 0;
+        deviceName = transform.name;
     }
 
     // Update is called once per frame
     void Update()
     {
-        checkRequirement();
+        if (deviceName =="Warehouse")
+        {
+            checkRequirement();
+        }
+        
     }
 
     private void checkRequirement()
@@ -41,4 +47,24 @@ public class DeviceManager : MonoBehaviour
         food.transform.position = requirementOwner.transform.position;
         
     }
+
+    /// <summary>
+    /// 检查物体能否被放进来
+    /// </summary>
+    public bool CheckInput(GameObject foodInHand)
+    {
+        GameObject food;
+        if(foodInHand.layer==LayerMask.NameToLayer("Dish"))
+        {
+            food = foodInHand.transform.GetChild(0).gameObject;
+            if(food.transform.GetComponent<FoodMixtureController>().canBeCooked)
+            {
+                return true;
+            }
+        }
+        
+        return false;
+
+    }
+    
 }

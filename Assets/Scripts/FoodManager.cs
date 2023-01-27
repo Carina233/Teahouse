@@ -20,6 +20,7 @@ public class FoodManager : MonoBehaviour
     public bool serveCorrectly;//是否正确
     public List<string> canMakeWhatDishes;//可以做成什么菜
     public List<string> canBeMakeByWhat;//由什么合成
+    public bool canBeCooked;//是否可以被烹饪
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +37,7 @@ public class FoodManager : MonoBehaviour
                 canMakeWhatDishes = fd.canMakeWhatDishes;
                 canBeMakeByWhat = fd.canBeMakeByWhat;
                 stackable = fd.stackable;
+                canBeCooked = fd.canBeCooked;
             }
         }
 
