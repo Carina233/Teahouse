@@ -5,12 +5,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using static QuestManager;
 
+/// <summary>
+/// 任务UI显示管理
+/// </summary>
 public class QuestUI : MonoBehaviour
 {
+    
     public string foodName;
     public State state;
     public Slider slider;
-    
     public TMP_Text description;
 
     // Start is called before the first frame update

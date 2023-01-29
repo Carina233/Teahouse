@@ -227,6 +227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5983edd2bd271c9478facf9a312fae04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodName: 
+  state: 0
   slider: {fileID: 8746065985816902495}
   description: {fileID: 3535540116740447883}
 --- !u!1 &3535540117258047190
@@ -420,7 +422,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slider
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 47ed80605f325c745a5244970d55759c, type: 3}
 --- !u!224 &8746065985816902489 stripped
 RectTransform:

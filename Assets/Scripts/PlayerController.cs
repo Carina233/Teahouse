@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
        
         Move();
         controlFood();
-        controlWarehouse();
+        
     }
 
     /// <summary>
@@ -161,29 +161,12 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 从仓库取物
     /// </summary>
-    public void controlWarehouse()
+    public void controlWarehouse(GameObject placeType)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-
-            //手上有没有东西
-            GameObject food = foodCheck(moveDir);
-            if (food||checkHand())
-            {
-                return;
-            }
-            //前面是仓库吗，是的话就向仓库请求取出物品
-            GameObject placeType = placeCheck(moveDir);
-            if(!placeType)
-            {
-                return;
-            }
-            if (placeType.name=="Warehouse")
-            {
-                placeType.GetComponent<DeviceManager>().requirement = 1;
-                placeType.GetComponent<DeviceManager>().requirementOwner = gameObject;
-            }
-        }
+        
+         placeType.GetComponent<DeviceManager>().requirement = 1;
+         placeType.GetComponent<DeviceManager>().requirementOwner = gameObject;
+            
     }
     /// <summary>
     /// 查看是否有碟子/碗
@@ -326,6 +309,13 @@ public class PlayerController : MonoBehaviour
                     
                     return;
                 }
+
+                //仓库里的东西可以拿
+                if(placeType&&placeType.transform.name=="Warehouse")
+                {
+                    controlWarehouse(placeType);
+                    return;
+                }
             }
 
             /////////////////////////////
@@ -366,6 +356,7 @@ public class PlayerController : MonoBehaviour
 
                         Debug.Log("前方有空厨具");
                         placeState = PlaceState.EmptyCooker;
+                        //check
                     }
                     else//不是
                     {
@@ -411,7 +402,15 @@ public class PlayerController : MonoBehaviour
                             foodInHand.layer = LayerMask.NameToLayer(foodInHand.transform.name);
                         }
                         break;
-                    case "Device"://无厨具厨具桌
+                    case "Device"://无厨具厨具桌,只有厨具可以放上来
+                        if (foodInHand.transform.name=="Cooker")
+                        {
+                            foodInHand.transform.SetParent(placeType.transform);
+                            foodInHand.transform.position = placeType.transform.position;
+                            foodInHand.layer = LayerMask.NameToLayer(foodInHand.transform.name);
+
+                            //check
+                        }
                         break;
                     case "OutputCheck"://放到出菜口
                         foodInHand.transform.SetParent(placeType.transform);
@@ -502,7 +501,7 @@ public class PlayerController : MonoBehaviour
     /// 物品放置位置检测
     /// </summary>
     /// <param name="dir"></param>
-    /// <returns></returns>
+    /// <returns>null就是没有检测到place</returns>
     GameObject placeCheck(Vector2 dir)
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, layerCheckDistance_place, checkLayer_place);//射线检测

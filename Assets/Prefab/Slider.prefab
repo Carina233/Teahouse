@@ -236,7 +236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1129021099774463592}
   - component: {fileID: 1129021099774463598}
-  - component: {fileID: 1129021099774463599}
+  - component: {fileID: 504462092934415846}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1129021099774463599
+--- !u!114 &504462092934415846
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -327,7 +327,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1129021099774463593}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f85dae8e4e4d98145b5868996d371c05, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b01f7dee76e81b4998597dc27d8884d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1129021100262914800

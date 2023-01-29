@@ -5,6 +5,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 任务管理器
+/// </summary>
 public class QuestManager : MonoBehaviour
 {
     private static QuestManager instance;
@@ -19,9 +22,15 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 系统任务列表
+    /// </summary>
     [SerializeField]
     private List<Quest> questList;
 
+    /// <summary>
+    /// 现存需要完成的任务
+    /// </summary>
     [SerializeField]
     private List<GameObject> currentList;
 
@@ -34,7 +43,7 @@ public class QuestManager : MonoBehaviour
     void Start()
     {
         currentList = new List<GameObject>();
-        Debug.Log(questList.Count);
+        //Debug.Log(questList.Count);
         
 
 
@@ -46,6 +55,10 @@ public class QuestManager : MonoBehaviour
        
     }
 
+    /// <summary>
+    /// 使任务失败
+    /// </summary>
+    /// <param name="go"></param>
     public void turnFailedState(GameObject go)
     {
         go.GetComponent<QuestUI>().state = State.failed;
@@ -55,6 +68,11 @@ public class QuestManager : MonoBehaviour
         Destroy(go);
 
     }
+
+    /// <summary>
+    /// 使任务被完成
+    /// </summary>
+    /// <param name="go"></param>
     public void turnFinshedState(GameObject go)
     {
         go.GetComponent<QuestUI>().state = State.finshed;
@@ -64,6 +82,11 @@ public class QuestManager : MonoBehaviour
         Destroy(go);
 
     }
+
+    /// <summary>
+    /// 删除该任务
+    /// </summary>
+    /// <param name="objName"></param>
     public void deleteQuest(string objName)
     {
         for(int i=0;i<currentList.Count;i++)
@@ -76,6 +99,9 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 新增一个任务
+    /// </summary>
     public void addQuest()
     {
 
@@ -89,6 +115,11 @@ public class QuestManager : MonoBehaviour
         currentList.Add(initQuest(questList[random]));
     }
 
+    /// <summary>
+    /// 任务初始化
+    /// </summary>
+    /// <param name="q"></param>
+    /// <returns></returns>
     private GameObject initQuest(Quest q)
     {
         GameObject newQuest = GameObject.Instantiate(quest);
@@ -100,7 +131,8 @@ public class QuestManager : MonoBehaviour
         
 
         Slider slider = newQuest.GetComponent<QuestUI>().slider;
-        slider.transform.GetComponent<SliderManager>().setMaxValue(q._maxTime);
+        slider.transform.GetComponent<QuestSlider>().setMaxValue(q._maxTime);
+      
 
         TMP_Text description = newQuest.GetComponent<QuestUI>().description;
         description.transform.GetComponent<TMP_Text>().text=q._description;
@@ -110,6 +142,10 @@ public class QuestManager : MonoBehaviour
         return newQuest;
     }
 
+    /// <summary>
+    /// 检查任务是否被完成
+    /// </summary>
+    /// <param name="go"></param>
     public void checkQuest(GameObject go)
     {
         for(int i=0;i<currentList.Count;i++)
@@ -128,6 +164,9 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 任务状态枚举类型
+    /// </summary>
     public enum State
     {
         waiting,
