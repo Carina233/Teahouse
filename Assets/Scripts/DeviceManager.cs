@@ -27,34 +27,9 @@ public class DeviceManager : MonoBehaviour
         {
             checkRequirement();
         }
-        else if(deviceName=="CookerTable")
-        {
-            checkCooking();
-        }
+        
     }
-    /// <summary>
-    /// 有东西在煮吗
-    /// </summary>
-    /// <returns></returns>
-    public void checkCooking()
-    {
-        //没锅
-        if(!transform.Find("Cooker"))
-        {
-            return ;
-        }
-        //有锅 有东西放在上面 准备自动开火
-        if (transform.Find("Cooker/Food").childCount>0&& transform.Find("Cooker").GetComponent<CookerController>().cooking==false)
-        {
-            //通知锅已经开火
-            transform.Find("Cooker").GetComponent<CookerController>().readyCooking=true;
-        }
-        //有锅没东西在煮
-
-
-        return ;
-    }
-
+   
     
 
     private void checkRequirement()

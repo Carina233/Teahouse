@@ -347,28 +347,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee9ffe540356771468bc256b2681a641, type: 3}
---- !u!1 &116191694 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5460050606376726413, guid: a4344b7ee0ba87b47877a0652e7d60f7, type: 3}
-  m_PrefabInstance: {fileID: 5460050606470291011}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &116191695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5460050606376726412, guid: a4344b7ee0ba87b47877a0652e7d60f7, type: 3}
   m_PrefabInstance: {fileID: 5460050606470291011}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &116191699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116191694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e92b8b709180c540ba60b3d1da94078, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &118134080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3123,7 +3106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b183c31d51dd0241994482bbdcd10d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderValue: 0
 --- !u!1001 &807606013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8136,6 +8118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3428305981114441980}
   - component: {fileID: 6477428791354743540}
+  - component: {fileID: 6477428791354743541}
   m_Layer: 7
   m_Name: Food
   m_TagString: Untagged
@@ -8521,6 +8504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cookingSlider: {fileID: 786329100}
   readyCooking: 0
+  cooking: 0
 --- !u!212 &6477428791354743540
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8573,6 +8557,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6477428791354743541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20454309981408132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b830c105807e9742939117516dab2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &7253326551057351872
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8751,7 +8747,6 @@ GameObject:
   - component: {fileID: 7253326552421369851}
   - component: {fileID: 7253326552421369830}
   - component: {fileID: 7253326552421369829}
-  - component: {fileID: 7253326552421369852}
   m_Layer: 12
   m_Name: MixingContainer
   m_TagString: Untagged
@@ -8775,15 +8770,3 @@ Transform:
   m_Father: {fileID: 487904348}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7253326552421369852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7253326552421369850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e92b8b709180c540ba60b3d1da94078, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
