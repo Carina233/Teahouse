@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CookerController : MonoBehaviour
 {
     public Slider cookingSlider;
+    public CookerFoodState cookerFoodState;
     public bool readyCooking=false;//未收到开火通知
     public bool cooking = false;
 
@@ -25,6 +26,8 @@ public class CookerController : MonoBehaviour
         //初始化进度条
         cookingSlider.transform.GetComponent<CookingSlider>().setMaxValue(0);
         cookingSlider.transform.GetComponent<Slider>().value = 0;
+
+        cookerFoodState = CookerFoodState.none;
     }
 
     // Update is called once per frame
@@ -35,18 +38,28 @@ public class CookerController : MonoBehaviour
 
         if(readyCooking==true&&cooking==false)
         {
+            //从没被煮过的，初始化
             if(cookingSlider.transform.GetComponent<Slider>().maxValue== 0)
             {
                 Debug.Log("readyCooking==true&&cooking==false");
                 foodNeedTime = getFoodNeedTime();//计算煮食物所需要的时间
                 //needCookingTime = foodNeedTime;
                 cookingSlider.transform.GetComponent<CookingSlider>().setMaxValue(foodNeedTime);//给slider赋值
+                cookerFoodState = CookerFoodState.Cooking;
                 cookingSlider.GetComponent<CookingSlider>().repeatFunction();
-               
             }
             else
             {
-                cookingSlider.GetComponent<CookingSlider>().repeatFunction();
+                //煮过的继续煮
+                if (cookerFoodState == CookerFoodState.Cooking)
+                {
+                    cookingSlider.GetComponent<CookingSlider>().repeatFunction();
+                }
+                //煮好的继续煮
+                else if (cookerFoodState == CookerFoodState.Finshed)
+                {
+                    cookingSlider.GetComponent<CookingSlider>().repeatOverCookedTimeCount();
+                }
             }
             cooking = true;
             readyCooking = false;
@@ -65,8 +78,10 @@ public class CookerController : MonoBehaviour
         {
             Debug.Log("transform.parent.name!=CookerTable");
             cookingSlider.GetComponent<CookingSlider>().stopValue();
+            cookingSlider.GetComponent<CookingSlider>().stopOverCookedTimeCount();
             cooking = false;
             //transform.Find("Cooker").GetComponent<CookerController>().readyCooking = false;
+
             return;
         }
         //有炉 有东西放在上面 被煮
@@ -75,10 +90,15 @@ public class CookerController : MonoBehaviour
             Debug.Log("readyCooking = true");
             readyCooking = true;
         }
+        else if (transform.Find("Food").childCount == 0)
+        {
+            resetCookController();
+            cookingSlider.GetComponent<CookingSlider>().resetCookingSlider();
+        }
         
     }
 
-
+   
     public int getFoodNeedTime()
     {
         int cookTime = 20;
@@ -96,7 +116,66 @@ public class CookerController : MonoBehaviour
         return cookTime;
     }
 
-    
+    public enum CookerFoodState
+    {
+        none,
+        StopCooking,
+        Cooking,
+        Finshed,
+        OverCooked,
+    }
+    /// <summary>
+    /// 设置锅里食物的状态
+    /// </summary>
+    /// <param name="state">1煮好，0没煮好，-1煮过头了</param>
+    public void setCookerFoodState(int state)
+    {
+        if(state==1)
+        {
+            cookerFoodState = CookerFoodState.Finshed;
+        }
+        else if(state==-1)
+        {
+            cookerFoodState = CookerFoodState.OverCooked;
+        }
+        else
+        {
+            cookerFoodState = CookerFoodState.Cooking;
+        }
+        
+
+    }
+
+    public int getCookerFoodState()
+    {
+        if (cookerFoodState == CookerFoodState.Finshed)
+        {
+            return 1;
+        }
+        else if (cookerFoodState == CookerFoodState.OverCooked)
+        {
+            return -1;
+        }
+        else
+        {
+            return 0;
+        }
+
+
+    }
+
+    /// <summary>
+    /// 当cooker重新变空，即将内容物交付给了其他容器/垃圾桶时，重新设置CookController
+    /// </summary>
+    public void resetCookController()
+    {
+        readyCooking = false;//未收到开火通知
+        cooking = false;
+
+        cookingSlider.transform.GetComponent<CookingSlider>().setMaxValue(0);
+        cookingSlider.transform.GetComponent<Slider>().value = 0;
+        cookerFoodState = CookerFoodState.none;
+    }
 
 }
 

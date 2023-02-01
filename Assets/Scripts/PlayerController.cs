@@ -413,8 +413,35 @@ public class PlayerController : MonoBehaviour
                         }
                         break;
                     case "OutputCheck"://放到出菜口
-                        foodInHand.transform.SetParent(placeType.transform);
-                        foodInHand.transform.position = placeType.transform.position;
+                        if (foodInHand.name=="Dish"&&foodInHand.transform.GetChild(0).childCount!=0)
+                        {
+                            foodInHand.transform.SetParent(placeType.transform);
+                            foodInHand.transform.position = placeType.transform.position;
+                        }
+                        else if(inHandState==InHandState.SingleFood)
+                        {
+                            foodInHand.transform.SetParent(placeType.transform);
+                            foodInHand.transform.position = placeType.transform.position;
+                        }
+
+                       
+                        break;
+
+                    case "WasteBin"://放到垃圾桶
+                        if(foodInHand.layer==LayerMask.NameToLayer("Food"))
+                        {
+                            foodInHand.transform.SetParent(placeType.transform);
+                            foodInHand.transform.position = placeType.transform.position;
+                        }
+                        else if(foodInHand.transform.GetChild(0).childCount>0)
+                        {
+                            for (int i = foodInHand.transform.GetChild(0).childCount - 1; i >= 0; i--)
+                            {
+                                foodInHand.transform.GetChild(0).GetChild(i).position = placeType.transform.position;
+                                foodInHand.transform.GetChild(0).GetChild(i).SetParent(placeType.transform);
+                            }
+                        }
+
                         break;
                 }
             }
@@ -427,12 +454,16 @@ public class PlayerController : MonoBehaviour
             if(inHandState.Equals(InHandState.EmptyDish)&&placeState.Equals(PlaceState.FullCooker))
             {
                 //如果煮熟了
-                for(int i = dish.transform.GetChild(0).childCount - 1; i >= 0; i--)
-                {
-                    dish.transform.GetChild(0).GetChild(i).position = foodInHand.transform.position;
-                    dish.transform.GetChild(0).GetChild(i).SetParent(foodInHand.transform.GetChild(0));
-                    
-                }
+               if(dish.transform.GetComponent<CookerController>().getCookerFoodState()==1)
+               {
+                    for (int i = dish.transform.GetChild(0).childCount - 1; i >= 0; i--)
+                    {
+                        dish.transform.GetChild(0).GetChild(i).position = foodInHand.transform.position;
+                        dish.transform.GetChild(0).GetChild(i).SetParent(foodInHand.transform.GetChild(0));
+
+                    }
+               }
+                
                
             }
 
@@ -457,16 +488,27 @@ public class PlayerController : MonoBehaviour
             {
                 foodInHand.transform.SetParent(dish.transform.GetChild(0));
                 foodInHand.transform.position = dish.transform.GetChild(0).position;
+
+                dish.transform.GetChild(0).GetComponent<FoodMixtureController>().checkMix = true;
             }
 
             //拿的是空厨具。
             //拿的是非空厨具，可以把厨具里的食物放到面前空碟子（厨具 变空）。倒进垃圾桶。
             else if (inHandState.Equals(InHandState.FullCooker) && placeState.Equals(PlaceState.EmptyDish))
             {
-                for (int i = foodInHand.transform.GetChild(0).childCount - 1; i >= 0; i--)
+               /* for (int i = foodInHand.transform.GetChild(0).childCount - 1; i >= 0; i--)
                 {
                     foodInHand.transform.GetChild(0).GetChild(i).position = dish.transform.position;
                     foodInHand.transform.GetChild(0).GetChild(i).SetParent(dish.transform.GetChild(0));
+                }*/
+
+                if (foodInHand.transform.GetComponent<CookerController>().getCookerFoodState() == 1)
+                {
+                    for (int i = foodInHand.transform.GetChild(0).childCount - 1; i >= 0; i--)
+                    {
+                        foodInHand.transform.GetChild(0).GetChild(i).position = dish.transform.position;
+                        foodInHand.transform.GetChild(0).GetChild(i).SetParent(dish.transform.GetChild(0));
+                    }
                 }
             }
 

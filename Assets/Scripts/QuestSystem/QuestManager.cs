@@ -44,7 +44,7 @@ public class QuestManager : MonoBehaviour
     {
         currentList = new List<GameObject>();
         //Debug.Log(questList.Count);
-        
+        InvokeRepeating("addQuest", 0, 5);
 
 
     }
@@ -158,9 +158,18 @@ public class QuestManager : MonoBehaviour
                 GameObject quest= GameObject.Find(currentList[i].name);
                 turnFinshedState(quest);
                 
-                Destroy(go);
+                
+                
                 return;
             }
+        }
+        if (go.transform.parent.name == "Dish")
+        {
+            Destroy(go.transform.parent.gameObject);
+        }
+        else
+        {
+            Destroy(go);
         }
     }
 
