@@ -1,0 +1,716 @@
+fileFormatVersion: 2
+guid: 476910f51b90c264988f868bef2c8abd
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 638
+        width: 91
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c61fc9dd6703a44c83247b30864754f
+      internalID: 622272809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_1
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 852
+        width: 289
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb9b4e6d9f5456945b6e4da54849d148
+      internalID: 1767068528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_2
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 892
+        width: 216
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e5d4c1ef64228a448314b0314855f4e
+      internalID: -1688514828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_3
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 938
+        width: 171
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f48e050d0457de44bc42c9557400042
+      internalID: -1995049028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_4
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 902
+        width: 171
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11a607bef39b6ec468d2f04fe6c8eafa
+      internalID: 1925676322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_5
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 959
+        width: 44
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb2d9f37b78934f45b29a0e5ffd2f32e
+      internalID: -897682574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_6
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 702
+        width: 165
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5b21c763ceb802458499c980c5ab9b0
+      internalID: 792013963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_7
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 765
+        width: 191
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee35426ef60cbe541826e7c520f89371
+      internalID: 518630358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_8
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 787
+        width: 171
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2336534b1884ae4199bc3e62ea74920
+      internalID: -1126431110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_9
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 808
+        width: 165
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff513f516a861184db79cf7931910dd3
+      internalID: 1056787439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_10
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 770
+        width: 165
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f13c68b13a448e45a9ab3a2a9eb3f89
+      internalID: 1229024658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_11
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 642
+        width: 107
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7b9682ea58658c47aa14b842ddfc2ee
+      internalID: -1831929743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_12
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 681
+        width: 120
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 218c42277812861428e9c8898eff26f9
+      internalID: 260542311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_13
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 675
+        width: 54
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0e3c0b2c8edbdb488a05e43492f63a7
+      internalID: 502973211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_14
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 684
+        width: 168
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60c598b207c3a95458bd9afb2ba41991
+      internalID: -594020235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_15
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 674
+        width: 165
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 291f104b83bbb8941a728b4156a57307
+      internalID: -1252269590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_16
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 696
+        width: 130
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acb2b94bdea12e74288fded9fb11fd58
+      internalID: -686614446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_17
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 253
+        width: 101
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eacbf1d6fefb6b40af6df1cd3e59164
+      internalID: 1959623876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_18
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 499
+        width: 171
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2628a98589df89546ada067038a83d3a
+      internalID: -2068718033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_19
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 526
+        width: 93
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe13b8fbfe220c74d91fbd863e3a2ca2
+      internalID: 165930030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_20
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 597
+        width: 148
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e1f5e0b012f14b4fa7f6449520ddc24
+      internalID: 1985160140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_21
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 359
+        width: 122
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9462004dec7d5e348ad3fa050222f329
+      internalID: 1058199563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_22
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 409
+        width: 115
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b044bdaf23efc874da031d20cc0d6151
+      internalID: -1500067480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_23
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 257
+        width: 133
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd78458c53184ea4fa5e6cedb1eedc29
+      internalID: 1730525490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_24
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 33
+        width: 133
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83cc7bb18cd330245b6895e77a6b1e7a
+      internalID: 14246662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_25
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 157
+        width: 89
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df5d571a4378932448f6f6cb9806c476
+      internalID: 1505802784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AutoAtlas-1.a1ba0_26
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 83
+        width: 111
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 403f595fa542561499ad345c04e23a37
+      internalID: -1424325117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      AutoAtlas-1.a1ba0_8: -1126431110
+      AutoAtlas-1.a1ba0_26: -1424325117
+      AutoAtlas-1.a1ba0_12: 260542311
+      AutoAtlas-1.a1ba0_22: -1500067480
+      AutoAtlas-1.a1ba0_5: -897682574
+      AutoAtlas-1.a1ba0_19: 165930030
+      AutoAtlas-1.a1ba0_2: -1688514828
+      AutoAtlas-1.a1ba0_9: 1056787439
+      AutoAtlas-1.a1ba0_3: -1995049028
+      AutoAtlas-1.a1ba0_24: 14246662
+      AutoAtlas-1.a1ba0_17: 1959623876
+      AutoAtlas-1.a1ba0_7: 518630358
+      AutoAtlas-1.a1ba0_20: 1985160140
+      AutoAtlas-1.a1ba0_11: -1831929743
+      AutoAtlas-1.a1ba0_13: 502973211
+      AutoAtlas-1.a1ba0_25: 1505802784
+      AutoAtlas-1.a1ba0_21: 1058199563
+      AutoAtlas-1.a1ba0_0: 622272809
+      AutoAtlas-1.a1ba0_18: -2068718033
+      AutoAtlas-1.a1ba0_1: 1767068528
+      AutoAtlas-1.a1ba0_15: -1252269590
+      AutoAtlas-1.a1ba0_14: -594020235
+      AutoAtlas-1.a1ba0_23: 1730525490
+      AutoAtlas-1.a1ba0_16: -686614446
+      AutoAtlas-1.a1ba0_6: 792013963
+      AutoAtlas-1.a1ba0_4: 1925676322
+      AutoAtlas-1.a1ba0_10: 1229024658
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
