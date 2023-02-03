@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questID: Q0002
   npcID: 
-  title: bbb
-  description: bbbbbb
+  title: Changfen
+  description: "\u4F60\u597D\uFF0C\u6211\u8981\u4E00\u4EFD\u86CB\u80A0\uFF0C\u5728\u8FD9\u91CC\u5403"
   maxTime: 100
   questState:
     IsOngoing: 0
@@ -24,4 +24,3 @@ MonoBehaviour:
     money: 0
     EXP: 0
   cmpltObjectiveInOrder: 0
-  collectObjectives: []

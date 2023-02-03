@@ -14,52 +14,77 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodDetailDataList:
   - foodId: 1001
+    calculateNum: 0
     foodName: "\u7EF4\u4ED6\u5976"
+    foodLayer: 
     foodImage: {fileID: 0}
     foodIntroduction: "\u7EF4\u4ED6\u5976"
     stackable: 0
     stackNum: 0
-    finshCooking: 0
+    place:
+      serializedVersion: 2
+      m_Bits: 0
+    canBeCooked: 0
     serveCorrectly: 0
-    canMakeWhatDishes: 
-    canBeMakeByWhat: 
+    canMakeWhatDishes: []
+    canBeMakeByWhat: []
   - foodId: 1002
+    calculateNum: 0
     foodName: "\u8C46\u6D46"
+    foodLayer: 
     foodImage: {fileID: 0}
     foodIntroduction: "\u8C46\u6D46"
     stackable: 0
     stackNum: 0
-    finshCooking: 0
+    place:
+      serializedVersion: 2
+      m_Bits: 0
+    canBeCooked: 0
     serveCorrectly: 0
-    canMakeWhatDishes: 
-    canBeMakeByWhat: 
+    canMakeWhatDishes: []
+    canBeMakeByWhat: []
   - foodId: 1003
+    calculateNum: 0
     foodName: "\u9762\u7C89"
-    foodImage: {fileID: 21300000, guid: c97a9372f3ee259469fe4deb97a5627e, type: 3}
+    foodLayer: 
+    foodImage: {fileID: 21300000, guid: 333d05fb522e2214aaebc47ecfc9da22, type: 3}
     foodIntroduction: "\u9762\u7C89"
-    stackable: 0
+    stackable: 1
     stackNum: 0
-    finshCooking: 0
+    place:
+      serializedVersion: 2
+      m_Bits: 0
+    canBeCooked: 1
     serveCorrectly: 0
-    canMakeWhatDishes: ed030000
-    canBeMakeByWhat: 
+    canMakeWhatDishes: []
+    canBeMakeByWhat: []
   - foodId: 1004
+    calculateNum: 0
     foodName: "\u9E21\u86CB"
+    foodLayer: 
     foodImage: {fileID: 21300000, guid: 91e5d969def21c74a941ae357fe5b993, type: 3}
     foodIntroduction: "\u9E21\u86CB"
     stackable: 0
     stackNum: 0
-    finshCooking: 0
+    place:
+      serializedVersion: 2
+      m_Bits: 0
+    canBeCooked: 0
     serveCorrectly: 0
-    canMakeWhatDishes: ed030000
-    canBeMakeByWhat: 
+    canMakeWhatDishes: []
+    canBeMakeByWhat: []
   - foodId: 1005
+    calculateNum: 0
     foodName: "\u80A0\u7C89"
+    foodLayer: 
     foodImage: {fileID: 21300000, guid: d766e86b0eabe714db5ac89984e32fad, type: 3}
     foodIntroduction: "\u80A0\u7C89"
     stackable: 0
     stackNum: 0
-    finshCooking: 0
+    place:
+      serializedVersion: 2
+      m_Bits: 0
+    canBeCooked: 0
     serveCorrectly: 0
-    canMakeWhatDishes: 
-    canBeMakeByWhat: eb030000ec030000
+    canMakeWhatDishes: []
+    canBeMakeByWhat: []

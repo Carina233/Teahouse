@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class DeviceManager : MonoBehaviour
 {
-    public string deviceName;
+    public int deviceLayer;
     
     public int requirement;
     public GameObject requirementOwner;
@@ -16,14 +16,14 @@ public class DeviceManager : MonoBehaviour
     void Start()
     {
         requirement = 0;
-        deviceName = transform.name;
+        deviceLayer = gameObject.layer ;
        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (deviceName =="Warehouse")
+        if (deviceLayer == LayerMask.NameToLayer("Warehouse"))
         {
             checkRequirement();
         }

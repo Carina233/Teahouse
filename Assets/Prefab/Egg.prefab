@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 30
-  m_Sprite: {fileID: 21300000, guid: 91e5d969def21c74a941ae357fe5b993, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 187f74be7a7233949ab0f3d6f206cc07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodId: 
+  calculateNum: 0
   foodName: 
   foodLayer: 
   foodImage: {fileID: 0}
@@ -128,3 +129,4 @@ MonoBehaviour:
   serveCorrectly: 0
   canMakeWhatDishes: []
   canBeMakeByWhat: []
+  canBeCooked: 0

@@ -311,7 +311,7 @@ public class PlayerController : MonoBehaviour
                 }
 
                 //仓库里的东西可以拿
-                if(placeType&&placeType.transform.name=="Warehouse")
+                if (placeType && placeType.gameObject.layer == LayerMask.NameToLayer("Warehouse"))
                 {
                     controlWarehouse(placeType);
                     return;

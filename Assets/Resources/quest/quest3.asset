@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questID: Q0003
   npcID: 
-  title: Vita
-  description: VitaVita
-  maxTime: 20
+  title: Changfen
+  description: "\u6253\u5305\u4E00\u4EFD\u658B\u80A0"
+  maxTime: 100
   questState:
     IsOngoing: 0
     IsFailed: 0

@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2250370809878743768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.79, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5071476432927613550}
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 77ab84f419bd17f438b7802aa2cbf6e9, type: 3}
+  m_Color: {r: 1, g: 0.87795883, b: 0.44025153, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5071476432927613544}
   - component: {fileID: 5071476432927613547}
   - component: {fileID: 5071476432927613546}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Warehouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,8 +160,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: efdc78cee3a388b41bb007d66906bcb4, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 333d05fb522e2214aaebc47ecfc9da22, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -184,9 +184,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7cd7599447572428a3ed70135e185a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deviceName: 
   requirement: 0
   requirementOwner: {fileID: 0}
-  foodType: {fileID: 9018932602710075143, guid: 2c0e28fc406d1f04a9c66e72f70ead95, type: 3}
+  foodType: {fileID: 6368171234430589823, guid: cf6811dcd298a4143bbbb07bc2dd9755, type: 3}
 --- !u!61 &5071476432927613547
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -204,7 +205,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.3031785, y: 1}
+    oldSize: {x: 0.5, y: 0.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

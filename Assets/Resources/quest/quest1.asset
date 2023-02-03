@@ -15,7 +15,7 @@ MonoBehaviour:
   questID: Q0001
   npcID: 
   title: Vita
-  description: VitaVitaVita
+  description: "\u8001\u677F\uFF0C\u6211\u8981\u4E00\u652F\u7EF4\u4ED6\u5976\u8001\u677F"
   maxTime: 100
   questState:
     IsOngoing: 0

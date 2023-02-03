@@ -30,15 +30,15 @@ MonoBehaviour:
     canBeMakeByWhat: []
   - foodId: F0002
     calculateNum: 2
-    foodName: SoyaBeanMilk
+    foodName: Flour
     foodLayer: Food
-    foodImage: {fileID: 21300000, guid: 654882de1a010a446a38f3ccec25636f, type: 3}
-    foodIntroduction: Doujiang
+    foodImage: {fileID: 21300000, guid: 333d05fb522e2214aaebc47ecfc9da22, type: 3}
+    foodIntroduction: Flour
     stackable: 1
     stackNum: 0
     place:
       serializedVersion: 2
-      m_Bits: 2048
+      m_Bits: 4608
     canBeCooked: 1
     serveCorrectly: 0
     canMakeWhatDishes: []
@@ -47,23 +47,23 @@ MonoBehaviour:
     calculateNum: 3
     foodName: Egg
     foodLayer: Food
-    foodImage: {fileID: 21300000, guid: 91e5d969def21c74a941ae357fe5b993, type: 3}
+    foodImage: {fileID: 21300000, guid: 187f74be7a7233949ab0f3d6f206cc07, type: 3}
     foodIntroduction: Egg
     stackable: 1
     stackNum: 0
     place:
       serializedVersion: 2
-      m_Bits: 2048
+      m_Bits: 4608
     canBeCooked: 1
     serveCorrectly: 0
     canMakeWhatDishes: []
     canBeMakeByWhat: []
   - foodId: F0004
     calculateNum: 5
-    foodName: SoyaBeanMilk+Egg
+    foodName: Egg+Flour
     foodLayer: Food
-    foodImage: {fileID: 21300000, guid: d766e86b0eabe714db5ac89984e32fad, type: 3}
-    foodIntroduction: Vita+Doujiang
+    foodImage: {fileID: 21300000, guid: 6b035624c24f86a4887d4835e0890e79, type: 3}
+    foodIntroduction: Egg+Flour
     stackable: 0
     stackNum: 0
     place:

@@ -75,7 +75,7 @@ public class FoodMixtureController : MonoBehaviour
         GameObject foodSprite = transform.gameObject;
 
         SpriteRenderer sr = foodSprite.transform.GetComponent<SpriteRenderer>();
-        Sprite sprite = Resources.Load("png/" + spriteName, typeof(Sprite)) as Sprite;
+        Sprite sprite = Resources.Load("GameItem/" + spriteName, typeof(Sprite)) as Sprite;
 
         sr.sprite = sprite;
         Debug.Log("sr.sprite" + sr.sprite);
