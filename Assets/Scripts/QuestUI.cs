@@ -12,6 +12,8 @@ public class QuestUI : MonoBehaviour
 {
     
     public string foodName;
+    public TMP_Text npcName;
+    public AudioClip npcAudioClip;
     public State state;
     public Slider slider;
     public TMP_Text description;

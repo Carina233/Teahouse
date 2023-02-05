@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: quest2
   m_EditorClassIdentifier: 
   questID: Q0002
-  npcID: 
+  npcID: N0002
   title: Changfen
   description: "\u4F60\u597D\uFF0C\u6211\u8981\u4E00\u4EFD\u86CB\u80A0\uFF0C\u5728\u8FD9\u91CC\u5403"
   maxTime: 100
@@ -21,6 +21,6 @@ MonoBehaviour:
     IsOngoing: 0
     IsFailed: 0
   questReward:
-    money: 0
+    money: 100
     EXP: 0
   cmpltObjectiveInOrder: 0

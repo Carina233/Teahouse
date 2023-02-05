@@ -51,6 +51,11 @@ public class DeviceManager : MonoBehaviour
         food.transform.name = foodType.transform.name;
         food.transform.SetParent(requirementOwner.transform);
         food.transform.position = requirementOwner.transform.position;
+
+        if(food.layer ==LayerMask.NameToLayer("Dish"))
+        {
+            food.layer = requirementOwner.layer;
+        }
         
     }
 

@@ -36,6 +36,21 @@ public class FoodMixtureController : MonoBehaviour
         {
             canBeCooked=canBeCooked&&child.GetComponent<FoodManager>().canBeCooked;
         }
+       
+       if(transform.childCount==0)
+        {
+            noChildSprite();
+        }
+    }
+
+    private void noChildSprite()
+    {
+        GameObject foodSprite = transform.gameObject;
+
+        SpriteRenderer sr = foodSprite.transform.GetComponent<SpriteRenderer>();
+        
+
+        sr.sprite = null;
     }
 
     public void checkMixture()
@@ -47,6 +62,10 @@ public class FoodMixtureController : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             GameObject go = transform.GetChild(i).gameObject;
+            
+
+            SpriteRenderer childSR = go.transform.GetComponent<SpriteRenderer>();
+            childSR.sprite = null;
             if (go.GetComponent<FoodManager>())
             {
                 calculator = calculator + go.GetComponent<FoodManager>().calculateNum;

@@ -10,6 +10,7 @@ using UnityEngine.UI;
 /// </summary>
 public class QuestManager : MonoBehaviour
 {
+    public GameObject npcList;
     private static QuestManager instance;
     private int questNo=1;
     public static QuestManager Instance
@@ -28,6 +29,9 @@ public class QuestManager : MonoBehaviour
     [SerializeField]
     private List<Quest> questList;
 
+    
+
+
     /// <summary>
     /// 现存需要完成的任务
     /// </summary>
@@ -42,6 +46,7 @@ public class QuestManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         currentList = new List<GameObject>();
         //Debug.Log(questList.Count);
         InvokeRepeating("addQuest", 0, 5);
@@ -128,7 +133,38 @@ public class QuestManager : MonoBehaviour
         questNo = questNo + 1;
 
         newQuest.GetComponent<QuestUI>().foodName=q._title;
+
+
+        //NPC初始化
+        AudioSource audioSource= newQuest.GetComponent<AudioSource>();
         
+        
+
+        TMP_Text npcName = newQuest.GetComponent<QuestUI>().npcName;
+        
+        string npcID = q._npcID;
+        List<NPCDetail> npcDetailList = npcList.GetComponent<NpcListManager>().npcList[0].npcDetailDataList;
+
+        foreach(NPCDetail n in npcDetailList)
+        {
+            if(n.npcID==npcID)
+            {
+                
+                audioSource.clip = n.npcVoice;//赋值不成功，不播放
+                
+                audioSource.Play();
+                
+                Debug.Log("n.npcVoice" + n.npcVoice);
+               
+
+                npcName.transform.GetComponent<TMP_Text>().text =n.npcName;
+                
+                break;
+            }
+        }
+
+
+
 
         Slider slider = newQuest.GetComponent<QuestUI>().slider;
         slider.transform.GetComponent<QuestSlider>().setMaxValue(q._maxTime);
@@ -138,6 +174,9 @@ public class QuestManager : MonoBehaviour
         description.transform.GetComponent<TMP_Text>().text=q._description;
 
         newQuest.GetComponent<QuestUI>().state = State.waiting;
+
+        
+
 
         return newQuest;
     }
