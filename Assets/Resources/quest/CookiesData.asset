@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0613f14d08799c341b1e229c7581a3da, type: 3}
+  m_Name: CookiesData
+  m_EditorClassIdentifier: 
+  foodDetailDataList:
+  - foodId: C0001
+    calculateNum: 2
+    foodName: FlourCookies
+    foodLayer: 
+    foodImage: {fileID: 21300000, guid: 4d8e103bdd3a57040b45f1c1f0f64c37, type: 3}
+    foodIntroduction: 
+    stackable: 0
+    stackNum: 0
+    place:
+      serializedVersion: 2
+      m_Bits: 0
+    canBeCooked: 0
+    serveCorrectly: 0
+    canMakeWhatDishes: []
+    canBeMakeByWhat: []
+  - foodId: C0002
+    calculateNum: 5
+    foodName: EggFlourCookies
+    foodLayer: 
+    foodImage: {fileID: 21300000, guid: e6bbfbf035d04024a9924815eaa2e87c, type: 3}
+    foodIntroduction: 
+    stackable: 0
+    stackNum: 0
+    place:
+      serializedVersion: 2
+      m_Bits: 0
+    canBeCooked: 0
+    serveCorrectly: 0
+    canMakeWhatDishes: []
+    canBeMakeByWhat: []

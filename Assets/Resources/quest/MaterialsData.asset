@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0613f14d08799c341b1e229c7581a3da, type: 3}
+  m_Name: MaterialsData
+  m_EditorClassIdentifier: 
+  foodDetailDataList:
+  - foodId: F0001
+    calculateNum: 0
+    foodName: Tea
+    foodLayer: Food
+    foodImage: {fileID: 21300000, guid: f4daa03f2ec18724f9ff68b402a2a034, type: 3}
+    foodIntroduction: Vita
+    stackable: 0
+    stackNum: 0
+    place:
+      serializedVersion: 2
+      m_Bits: 0
+    canBeCooked: 0
+    serveCorrectly: 0
+    canMakeWhatDishes: []
+    canBeMakeByWhat: []
+  - foodId: F0002
+    calculateNum: 2
+    foodName: Flour
+    foodLayer: Food
+    foodImage: {fileID: 21300000, guid: 333d05fb522e2214aaebc47ecfc9da22, type: 3}
+    foodIntroduction: Flour
+    stackable: 1
+    stackNum: 0
+    place:
+      serializedVersion: 2
+      m_Bits: 4608
+    canBeCooked: 1
+    serveCorrectly: 0
+    canMakeWhatDishes: []
+    canBeMakeByWhat: []
+  - foodId: F0003
+    calculateNum: 3
+    foodName: Egg
+    foodLayer: Food
+    foodImage: {fileID: 21300000, guid: 187f74be7a7233949ab0f3d6f206cc07, type: 3}
+    foodIntroduction: Egg
+    stackable: 1
+    stackNum: 0
+    place:
+      serializedVersion: 2
+      m_Bits: 4608
+    canBeCooked: 1
+    serveCorrectly: 0
+    canMakeWhatDishes: []
+    canBeMakeByWhat: []

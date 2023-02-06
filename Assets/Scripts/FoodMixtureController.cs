@@ -6,7 +6,9 @@ public class FoodMixtureController : MonoBehaviour
 {
     
     private List<string> list;
-    private List<foodDetail> foodDetailDataList;
+    private List<foodDetail> materialsDataList;
+    private List<foodDetail> mixturesDataList;
+    public int calculator;
     public bool checkMix;
 
     public bool canBeCooked;
@@ -16,8 +18,9 @@ public class FoodMixtureController : MonoBehaviour
     {
         canBeCooked = true;
         checkMix = false;
-        
-        foodDetailDataList = GameObject.Find("FoodList").transform.GetComponent<FoodListManager>().questList[0].foodDetailDataList;
+
+        materialsDataList = GameObject.Find("FoodList").transform.GetComponent<FoodListManager>().questList[0].foodDetailDataList;
+        mixturesDataList = GameObject.Find("FoodList").transform.GetComponent<FoodListManager>().questList[1].foodDetailDataList;
     }
 
     // Update is called once per frame
@@ -56,7 +59,7 @@ public class FoodMixtureController : MonoBehaviour
     public void checkMixture()
     {
         checkMix = false;
-        int calculator = 0;
+        int cal = 0;
         //通过对食材的特殊Id命名，直接计算得合成的物品
 
         for (int i = 0; i < transform.childCount; i++)
@@ -68,22 +71,24 @@ public class FoodMixtureController : MonoBehaviour
             childSR.sprite = null;
             if (go.GetComponent<FoodManager>())
             {
-                calculator = calculator + go.GetComponent<FoodManager>().calculateNum;
+                cal = cal + go.GetComponent<FoodManager>().calculateNum;
             }
 
         }
 
         string spriteName = "";
-        for (int i = 0; i < foodDetailDataList.Count; i++)
+        for (int i = 0; i < mixturesDataList.Count; i++)
         {
-            if (foodDetailDataList[i].calculateNum == calculator)
+            if (mixturesDataList[i].calculateNum == cal)
             {
-                spriteName = foodDetailDataList[i].foodImage.name;
-                Debug.Log("spriteName" + spriteName + calculator);
+                spriteName = mixturesDataList[i].foodImage.name;
+                Debug.Log("spriteName" + spriteName + cal);
                 break;
             }
 
         }
+
+        calculator = cal;
 
         if (spriteName == "")
         {
@@ -94,7 +99,7 @@ public class FoodMixtureController : MonoBehaviour
         GameObject foodSprite = transform.gameObject;
 
         SpriteRenderer sr = foodSprite.transform.GetComponent<SpriteRenderer>();
-        Sprite sprite = Resources.Load("GameItem/" + spriteName, typeof(Sprite)) as Sprite;
+        Sprite sprite = Resources.Load("GameItem/Mixtures/" + spriteName, typeof(Sprite)) as Sprite;
 
         sr.sprite = sprite;
         Debug.Log("sr.sprite" + sr.sprite);

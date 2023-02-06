@@ -13,66 +13,33 @@ MonoBehaviour:
   m_Name: DishesData
   m_EditorClassIdentifier: 
   foodDetailDataList:
-  - foodId: F0001
-    calculateNum: 1
-    foodName: Vita
-    foodLayer: Food
-    foodImage: {fileID: 21300000, guid: efdc78cee3a388b41bb007d66906bcb4, type: 3}
-    foodIntroduction: Vita
-    stackable: 0
-    stackNum: 0
-    place:
-      serializedVersion: 2
-      m_Bits: 2048
-    canBeCooked: 0
-    serveCorrectly: 0
-    canMakeWhatDishes: []
-    canBeMakeByWhat: []
-  - foodId: F0002
-    calculateNum: 2
-    foodName: Flour
-    foodLayer: Food
-    foodImage: {fileID: 21300000, guid: 333d05fb522e2214aaebc47ecfc9da22, type: 3}
-    foodIntroduction: Flour
-    stackable: 1
-    stackNum: 0
-    place:
-      serializedVersion: 2
-      m_Bits: 4608
-    canBeCooked: 1
-    serveCorrectly: 0
-    canMakeWhatDishes: []
-    canBeMakeByWhat: []
-  - foodId: F0003
-    calculateNum: 3
-    foodName: Egg
-    foodLayer: Food
-    foodImage: {fileID: 21300000, guid: 187f74be7a7233949ab0f3d6f206cc07, type: 3}
-    foodIntroduction: Egg
-    stackable: 1
-    stackNum: 0
-    place:
-      serializedVersion: 2
-      m_Bits: 4608
-    canBeCooked: 1
-    serveCorrectly: 0
-    canMakeWhatDishes: []
-    canBeMakeByWhat: []
-  - foodId: F0004
+  - foodId: D0001
     calculateNum: 5
-    foodName: Egg+Flour
-    foodLayer: Food
-    foodImage: {fileID: 21300000, guid: 6b035624c24f86a4887d4835e0890e79, type: 3}
-    foodIntroduction: Egg+Flour
+    foodName: changfen
+    foodLayer: 
+    foodImage: {fileID: 21300000, guid: e8b09918585ff834181cc445c325321b, type: 3}
+    foodIntroduction: 
     stackable: 0
     stackNum: 0
     place:
       serializedVersion: 2
-      m_Bits: 2048
+      m_Bits: 0
     canBeCooked: 0
     serveCorrectly: 0
-    canMakeWhatDishes:
-    - 
-    canBeMakeByWhat:
-    - F0002
-    - F0003
+    canMakeWhatDishes: []
+    canBeMakeByWhat: []
+  - foodId: D0002
+    calculateNum: 3
+    foodName: changfen
+    foodLayer: 
+    foodImage: {fileID: 21300000, guid: e8b09918585ff834181cc445c325321b, type: 3}
+    foodIntroduction: 
+    stackable: 0
+    stackNum: 0
+    place:
+      serializedVersion: 2
+      m_Bits: 0
+    canBeCooked: 0
+    serveCorrectly: 0
+    canMakeWhatDishes: []
+    canBeMakeByWhat: []

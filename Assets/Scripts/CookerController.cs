@@ -176,12 +176,19 @@ public class CookerController : MonoBehaviour
         cookingSlider.transform.GetComponent<Slider>().value = 0;
         cookerFoodState = CookerFoodState.none;
     }
+    //灶台通知有厨具有东西，开火
+    //第一次开火，初始化烹饪的时间，计算
+    //关火，停止--
+    //没煮完拿起厨具，进度条停止进度，记录进度
+    //第二次开火，以进度来烹饪。
+
+
+    
+
 
 }
 
 
-//灶台通知有厨具有东西，开火
-//第一次开火，初始化烹饪的时间，计算
-//关火，停止--
-//没煮完拿起厨具，进度条停止进度，记录进度
-//第二次开火，以进度来烹饪。
+
+
+

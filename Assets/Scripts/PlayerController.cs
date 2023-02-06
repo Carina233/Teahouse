@@ -462,7 +462,10 @@ public class PlayerController : MonoBehaviour
                         dish.transform.GetChild(0).GetChild(i).SetParent(foodInHand.transform.GetChild(0));
 
                     }
-               }
+                    foodInHand.transform.GetChild(0).GetComponent<DishesFoodController>().calculator
+                        = dish.transform.GetChild(0).transform.GetComponent<FoodCookedController>().calculator;
+                    
+                }
                 
                
             }
@@ -477,8 +480,10 @@ public class PlayerController : MonoBehaviour
                 {
                     foodInHand.transform.GetChild(0).GetChild(i).position = dish.transform.position;
                     foodInHand.transform.GetChild(0).GetChild(i).SetParent(dish.transform.GetChild(0).transform);
-
+                    
                 }
+                dish.transform.GetChild(0).transform.GetComponent<FoodCookedController>().calculator 
+                    = foodInHand.transform.GetChild(0).GetComponent<FoodMixtureController>().calculator;
             }
 
             //拿的是单食物。
@@ -509,6 +514,8 @@ public class PlayerController : MonoBehaviour
                         foodInHand.transform.GetChild(0).GetChild(i).position = dish.transform.position;
                         foodInHand.transform.GetChild(0).GetChild(i).SetParent(dish.transform.GetChild(0));
                     }
+                    dish.transform.GetChild(0).transform.GetComponent<DishesFoodController>().calculator
+                        = foodInHand.transform.GetChild(0).GetComponent<FoodCookedController>().calculator;
                 }
             }
 

@@ -26,8 +26,8 @@ public class FoodManager : MonoBehaviour
     {
         foodList = GameObject.Find("FoodList");
         foodName = transform.name;
-        List<foodDetail> fdList= foodList.GetComponent<FoodListManager>().questList[0].foodDetailDataList;
-        foreach(foodDetail fd in fdList)
+        List<foodDetail> mList= foodList.GetComponent<FoodListManager>().questList[0].foodDetailDataList;
+        foreach(foodDetail fd in mList)
         {
             if(foodName==fd.foodName)
             {
