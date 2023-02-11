@@ -5,7 +5,8 @@ using UnityEngine;
 public class DishesFoodController : MonoBehaviour
 {
     private List<foodDetail> dishesDataList;
-
+    
+    public string dishesFoodName;
     public int calculator;
 
     void Start()
@@ -19,7 +20,10 @@ public class DishesFoodController : MonoBehaviour
         getChildObj();
 
     }
-
+    public string getDishesFoodName()
+    {
+        return dishesFoodName;
+    }
     private void getChildObj()
     {
         if (transform.childCount == 0)
@@ -42,6 +46,8 @@ public class DishesFoodController : MonoBehaviour
     public void setSprite()
     {
 
+       
+
         string spriteName = "";
         for (int i = 0; i < dishesDataList.Count; i++)
         {
@@ -49,6 +55,7 @@ public class DishesFoodController : MonoBehaviour
             {
                 spriteName = dishesDataList[i].foodImage.name;
                 Debug.Log("spriteName66666" + spriteName + calculator);
+                dishesFoodName = dishesDataList[i].foodName;
                 break;
             }
 

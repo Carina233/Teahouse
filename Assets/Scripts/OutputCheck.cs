@@ -18,6 +18,9 @@ public class OutputCheck : MonoBehaviour
         checkFood();
     }
 
+    /// <summary>
+    /// 检查口接收食物，如果用碟子装的，分一类，不是用碟子装的分第二类
+    /// </summary>
     void checkFood()
     {
         int length = GetComponentsInChildren<Transform>(true).Length;

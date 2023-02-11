@@ -27,6 +27,16 @@ public class Quest : ScriptableObject
     }
 
     [SerializeField]
+    private string dishID;
+    public string _dishID
+    {
+        get
+        {
+            return dishID;
+        }
+    }
+
+    [SerializeField]
     private string title;//×öÒ»¸ö¼¦µ°³¦·Û
     public string _title
     {

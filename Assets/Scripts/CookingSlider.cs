@@ -14,6 +14,11 @@ public class CookingSlider : SliderManager
     /// <param name="value"></param>
     public override void setMaxValue(int value)
     {
+        if(value>0)
+        {
+            gameObject.SetActive(true);
+        }
+        
         GetComponent<Slider>().maxValue = value;
         GetComponent<Slider>().value = value;
     }
@@ -31,6 +36,9 @@ public class CookingSlider : SliderManager
         if (GetComponent<Slider>().value <= 0)
         {
             //ึ๓บรมห
+            gameObject.SetActive(false);
+
+
             cooker.GetComponent<CookerController>().setCookerFoodState(1);
             InvokeRepeating("overCookedTimeCount", 0, 1);
             CancelInvoke("setValue");
@@ -80,5 +88,7 @@ public class CookingSlider : SliderManager
     public void resetCookingSlider()
     {
        overcookedTime = 0;
+       stopOverCookedTimeCount();
+       stopValue();
     }
 }

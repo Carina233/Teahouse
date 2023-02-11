@@ -209,6 +209,8 @@ public class PlayerController : MonoBehaviour
         else
         {
             Debug.Log("hit.collider.gameObject" + hit.collider.gameObject);
+           
+           
             return hit.collider.gameObject;
         }
 
@@ -572,6 +574,7 @@ public class PlayerController : MonoBehaviour
                     foodInHand.transform.GetChild(0).GetChild(i).SetParent(dish.transform.GetChild(0));
                 }*/
 
+                //如果煮好了
                 if (foodInHand.transform.GetComponent<CookerController>().getCookerFoodState() == 1)
                 {
                     for (int i = foodInHand.transform.GetChild(0).childCount - 1; i >= 0; i--)
@@ -653,7 +656,7 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// 按钮控制物品
+    /// 按钮控制物品，需要同步键盘的
     /// </summary>
     public void btncontrolFood()
     {

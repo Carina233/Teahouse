@@ -72,7 +72,11 @@ public class CookerController : MonoBehaviour
     /// </summary>
     public void checkCookerTable()
     {
-
+        if (transform.Find("Food").childCount == 0)
+        {
+            resetCookController();
+            cookingSlider.GetComponent<CookingSlider>().resetCookingSlider();
+        }
         //没炉,不能煮东西哇
         if (transform.parent.name!="CookerTable")
         {
@@ -90,11 +94,7 @@ public class CookerController : MonoBehaviour
             Debug.Log("readyCooking = true");
             readyCooking = true;
         }
-        else if (transform.Find("Food").childCount == 0)
-        {
-            resetCookController();
-            cookingSlider.GetComponent<CookingSlider>().resetCookingSlider();
-        }
+        
         
     }
 
@@ -137,6 +137,7 @@ public class CookerController : MonoBehaviour
         else if(state==-1)
         {
             cookerFoodState = CookerFoodState.OverCooked;
+            
         }
         else
         {

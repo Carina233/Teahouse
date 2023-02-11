@@ -10,7 +10,8 @@ using static QuestManager;
 /// </summary>
 public class QuestUI : MonoBehaviour
 {
-    
+
+    public Image npcImage;
     public string foodName;
     public TMP_Text npcName;
     public AudioClip npcAudioClip;

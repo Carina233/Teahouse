@@ -6,11 +6,13 @@ public class FoodCookedController : MonoBehaviour
 {
     
     private List<foodDetail> cookiesDataList;
+    private GameObject cooker;
 
     public int calculator;
     
     void Start()
     {
+        cooker = transform.parent.gameObject;
         cookiesDataList = GameObject.Find("FoodList").transform.GetComponent<FoodListManager>().questList[2].foodDetailDataList;
         
     }
@@ -42,7 +44,17 @@ public class FoodCookedController : MonoBehaviour
 
     public void setSprite()
     {
-        
+        Debug.Log("颜色变白那百年");
+        if(cooker.GetComponent<CookerController>().getCookerFoodState()==-1)
+        {
+            Debug.Log("啊？");
+            transform.GetComponent<SpriteRenderer>().color = Color.black;
+        }
+        else
+        {
+            Debug.Log("白");
+            transform.GetComponent<SpriteRenderer>().color = Color.white;
+        }
         string spriteName = "";
         for (int i = 0; i < cookiesDataList.Count; i++)
         {

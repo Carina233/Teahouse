@@ -15,7 +15,7 @@ MonoBehaviour:
   foodDetailDataList:
   - foodId: D0001
     calculateNum: 5
-    foodName: changfen
+    foodName: Changfen
     foodLayer: 
     foodImage: {fileID: 21300000, guid: e8b09918585ff834181cc445c325321b, type: 3}
     foodIntroduction: 
@@ -30,7 +30,7 @@ MonoBehaviour:
     canBeMakeByWhat: []
   - foodId: D0002
     calculateNum: 3
-    foodName: changfen
+    foodName: Changfen
     foodLayer: 
     foodImage: {fileID: 21300000, guid: e8b09918585ff834181cc445c325321b, type: 3}
     foodIntroduction: 

@@ -138,10 +138,10 @@ public class QuestManager : MonoBehaviour
         //NPC初始化
         AudioSource audioSource= newQuest.GetComponent<AudioSource>();
         
-        
-
         TMP_Text npcName = newQuest.GetComponent<QuestUI>().npcName;
-        
+
+        Image npcSprite = newQuest.GetComponent<QuestUI>().npcImage;
+
         string npcID = q._npcID;
         List<NPCDetail> npcDetailList = npcList.GetComponent<NpcListManager>().npcList[0].npcDetailDataList;
 
@@ -150,14 +150,15 @@ public class QuestManager : MonoBehaviour
             if(n.npcID==npcID)
             {
                 
-                audioSource.clip = n.npcVoice;//赋值不成功，不播放
+                audioSource.clip = n.npcVoice;
                 
                 audioSource.Play();
                 
                 Debug.Log("n.npcVoice" + n.npcVoice);
-               
 
+                npcSprite.transform.GetComponent<Image>().sprite = n.npcSprite;
                 npcName.transform.GetComponent<TMP_Text>().text =n.npcName;
+                
                 
                 break;
             }
@@ -189,7 +190,8 @@ public class QuestManager : MonoBehaviour
     {
         for(int i=0;i<currentList.Count;i++)
         {
-            if(currentList[i].transform.GetComponent<QuestUI>().foodName==go.transform.name)
+            if(currentList[i].transform.GetComponent<QuestUI>().foodName==go.transform.name|| 
+                currentList[i].transform.GetComponent<QuestUI>().foodName == go.transform.GetComponent<DishesFoodController>().getDishesFoodName())
             {
 
                 Debug.Log("完成任务"+ currentList[i].name + go.transform.name+ currentList[i].transform.GetComponent<QuestUI>().foodName);
@@ -197,9 +199,7 @@ public class QuestManager : MonoBehaviour
                 GameObject quest= GameObject.Find(currentList[i].name);
                 turnFinshedState(quest);
                 
-                
-                
-                return;
+                break;
             }
         }
         if (go.transform.parent.name == "Dish")

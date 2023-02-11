@@ -364,6 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5983edd2bd271c9478facf9a312fae04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcImage: {fileID: 3535540117258047184}
   foodName: 
   npcName: {fileID: 3741322214265832571}
   npcAudioClip: {fileID: 0}
