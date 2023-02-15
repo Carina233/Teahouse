@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    public int time;
+    /*public int time;
     [Tooltip("总共箱子个数")] public int totalBoxCount;
     [Tooltip("当前已完成箱子个数")] public int currentBoxCount;
     [Tooltip("玩家移动步数")] public int playerMoveStep = 0;
@@ -160,5 +160,7 @@ public class GameManager : Singleton<GameManager>
                 UIManager.Instance.ShowStepLeftWarning();
             }
         }
-    }
+    }*/
+
+   
 }
