@@ -16,12 +16,13 @@ public class TimeController : MonoBehaviour
         }
         private void Update()
         {
-            Timer2();
+            Timer();
         }
 
-        private void Timer2()
+        private void Timer()
         {
             totalTime += Time.deltaTime;
+            //deltaTime是一帧所用时间，当经过了N帧，积累时间为1秒时进入，即每秒执行一次
             if (totalTime >= 1)
             {
                 second--;
@@ -36,10 +37,13 @@ public class TimeController : MonoBehaviour
                 }
                 else
                 {
-                    //Time.timeScale = 0;
+                    GameManager.Instance.PassCheck();
                 }
 
             }
-        }
+
+
+    }
+    
     
 }

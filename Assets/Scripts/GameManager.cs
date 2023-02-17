@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
+    
     /*public int time;
     [Tooltip("总共箱子个数")] public int totalBoxCount;
     [Tooltip("当前已完成箱子个数")] public int currentBoxCount;
@@ -32,6 +33,7 @@ public class GameManager : Singleton<GameManager>
         totalBoxCount = boxes.Length;
     }
 
+    
     void Update()
     {
         if (CheckLevel()) // 正式关卡才起作用
@@ -53,13 +55,7 @@ public class GameManager : Singleton<GameManager>
         return true;
     }
 
-    void CheckStepsLeft()
-    {
-        if (playerMoveStepLeft <= 0)
-        {
-            GameOver();
-        }
-    }
+  
 
     public void CheckPassLevel()
     {
@@ -162,5 +158,12 @@ public class GameManager : Singleton<GameManager>
         }
     }*/
 
+    /// <summary>
+    /// 关卡结算
+    /// </summary>
+    public void PassCheck()
+    {
+        Time.timeScale = 0;
+    }
    
 }
