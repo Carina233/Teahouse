@@ -164,6 +164,9 @@ public class GameManager : Singleton<GameManager>
     public void PassCheck()
     {
         Time.timeScale = 0;
+        GameObject basePanel=GameObject.Find("BasePanel");
+        GameObject passPanel = basePanel.transform.Find("PassPanel").gameObject;
+        passPanel.SetActive(true);
     }
    
 }
