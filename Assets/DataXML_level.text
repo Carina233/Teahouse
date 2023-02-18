@@ -1,0 +1,14 @@
+<Save FileName="File_levelData">
+  <level0>
+    <money>0</money>
+    <star>0</star>
+  </level0>
+  <level1>
+    <money>10</money>
+    <star>10</star>
+  </level1>
+  <level2>
+    <money>20</money>
+    <star>20</star>
+  </level2>
+</Save>

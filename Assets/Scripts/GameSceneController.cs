@@ -7,6 +7,7 @@ public class GameSceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.Instance.startGame();
         //测试用，正式删
         GameObject objSceneManager = new GameObject("SceneManager");
         
@@ -27,8 +28,31 @@ public class GameSceneController : MonoBehaviour
     {
         SceneManager.LoadScene("LevelScene");
         
-        
     }
 
-    
+    /// <summary>
+    /// 重载游戏关卡
+    /// </summary>
+    public void ResetThisGame()
+    {
+        GameManager.Instance.ResetThisGame();
+
+    }
+
+
+    /// <summary>
+    /// SaveTest
+    /// </summary>
+    public void SaveThisGame()
+    {
+        GameManager.Instance.SaveGame();
+
+    }
+
+    public void LoadThisGame()
+    {
+        GameManager.Instance.LoadGame();
+
+    }
+
 }

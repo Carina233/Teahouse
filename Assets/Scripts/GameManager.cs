@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    
+    [Tooltip("关卡")] public int level;
+    [Tooltip("时间")] public int time;
+    [Tooltip("成功订单数")] public int successNum;
+    [Tooltip("失败订单数")] public int failNum;
+    [Tooltip("总计收入")] public int money;
+    [Tooltip("等级划分")] public List<int> starLevel;
+    [Tooltip("达标星数")] public int star;
+
     /*public int time;
     [Tooltip("总共箱子个数")] public int totalBoxCount;
     [Tooltip("当前已完成箱子个数")] public int currentBoxCount;
@@ -165,8 +174,169 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 0;
         GameObject basePanel=GameObject.Find("BasePanel");
-        GameObject passPanel = basePanel.transform.Find("PassPanel").gameObject;
-        passPanel.SetActive(true);
+        GameObject PassMaskPanel = basePanel.transform.Find("PassMaskPanel").gameObject;
+        PassMaskPanel.SetActive(true);
+
+      
+    }
+
+    /// <summary>
+    /// 重置关卡
+    /// </summary>
+    public void ResetThisGame()
+    {
+        Debug.Log("重载" + SceneManager.s_strLoadedSceneName);
+        SceneManager.ReloadScene(SceneManager.s_strLoadedSceneName);
+
+
+    }
+
+    public void startGame()
+    {
+        Time.timeScale = 1;
+    }
+
+    public void SaveGame()
+    {
+        SaveByXML();
+    }
+    private void SaveByXML()
+    {
+        Save save = createSaveGameObject();
+        XmlDocument xmlDocument = new XmlDocument();
+        
+        if (!File.Exists(Application.dataPath + "/DataXML_level.text"))
+        {
+            XmlElement root = xmlDocument.CreateElement("Save");
+            root.SetAttribute("FileName", "File_levelData");
+            xmlDocument.AppendChild(root);
+            xmlDocument.Save(Application.dataPath + "/DataXML_level.text");
+        }
+
+        //XmlNode rootNode = xmlDocument.FirstChild;
+        //test
+       /* XmlElement starElement = xmlDocument.CreateElement("star");
+        starElement.InnerText = save.star.ToString();
+        rootNode.AppendChild(starElement);*/
+
+        //xmlDocument.Save(Application.dataPath + "/DataXML_level.text");
+
+        xmlDocument.Load(Application.dataPath + "/DataXML_level.text");
+
+        
+        #region CreateXML elements
+
+        
+        XmlNodeList levelNode = xmlDocument.GetElementsByTagName("level"+ save.level.ToString());
+        
+        if (levelNode.Count>0)
+        {
+            Debug.Log("levelNode.Count>0  "+ levelNode.Count);
+
+
+            XmlNodeList levelChildList = levelNode[0].ChildNodes;
+
+            foreach(XmlNode childNode in levelChildList)
+            {
+                XmlElement childElement = (XmlElement)childNode;//将节点转换一下类型
+                if (childElement.Name== "money")
+                {
+                    childElement.InnerText = save.money.ToString();
+                }
+                else if(childElement.Name == "star")
+                {
+                    childElement.InnerText = save.star.ToString();
+                }
+            }
+            xmlDocument.Save(Application.dataPath + "/DataXML_level.text");
+        }
+        else
+        {
+           
+            XmlNode root = xmlDocument.SelectSingleNode("Save");
+            Debug.Log("Roottttttttttt:" + root.Name);
+
+            XmlElement levelElement = xmlDocument.CreateElement("level" + save.level.ToString());
+            
+
+            XmlElement moneyElement = xmlDocument.CreateElement("money");
+            moneyElement.InnerText = save.money.ToString();
+            levelElement.AppendChild(moneyElement);
+
+            
+
+            XmlElement starElement = xmlDocument.CreateElement("star");
+            starElement.InnerText = save.star.ToString();
+            levelElement.AppendChild(starElement);
+
+            root.AppendChild(levelElement);
+
+
+            xmlDocument.Save(Application.dataPath + "/DataXML_level.text");
+        }
+
+
+        #endregion
+
+        Debug.Log("XML FILE SAVED");
+    }
+
+
+
+    private Save createSaveGameObject()
+    {
+        Save save = new Save();
+        save.level = level;
+        save.money = money;
+        save.star = star;
+        
+
+        return save;
+    }
+
+    public void LoadGame()
+    {
+        LoadByXML();
+    }
+    private void LoadByXML()
+    {
+        if (File.Exists(Application.dataPath + "/DataXML_level.text"))
+        {
+
+            Save save = createSaveGameObject();
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(Application.dataPath + "/DataXML_level.text");
+
+            XmlNodeList levelNodeList = xmlDocument.GetElementsByTagName("level" + save.level);
+
+            Debug.Log("save.level"+ save.level);
+
+            XmlNodeList levelChildList = levelNodeList[0].ChildNodes;
+
+            foreach (XmlNode childNode in levelChildList)
+            {
+                XmlElement childElement = (XmlElement)childNode;//将节点转换一下类型
+                if (childElement.Name == "money")
+                {
+                    int money = int.Parse(childElement.InnerText);
+                    save.money = money;
+                }
+                else if (childElement.Name == "star")
+                {
+                    int star = int.Parse(childElement.InnerText);
+                    save.star = star;
+                }
+            }
+
+            this.money = save.money;
+            this.star = save.star;
+            Debug.Log("File Loaded");
+        }
+        else
+        {
+            Debug.Log("Not Founded File");
+        }
+
     }
    
 }

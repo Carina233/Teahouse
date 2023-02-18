@@ -50,10 +50,34 @@ public class SceneManager : MonoBehaviour
         m_instance.LoadLevel(strLevelName, null);
     }
 
+    public static void ReloadScene(string strLevelName)
+    {
+        m_instance.ReloadLevel(strLevelName, null);
+    }
+
     public static void LoadScene(string strLevelName, Action onSecenLoaded)
     {
         m_instance.LoadLevel(strLevelName, onSecenLoaded);
     }
+    private void ReloadLevel(string strLevelName, Action onSecenLoaded, bool isDestroyAuto = true)
+    {
+        if (m_bLoading)
+        {
+            return;
+        }
+
+        m_bLoading = true;  //锁屏
+        //*开始加载        
+        m_onSceneLoaded = onSecenLoaded;
+        m_strNextSceneName = strLevelName;
+        m_strPreSceneName = m_strCurSceneName;
+        m_strCurSceneName = m_strLoadSceneName;
+        m_bDestroyAuto = isDestroyAuto;
+
+        //先异步加载Loading界面
+        StartCoroutine(StartLoadSceneOnEditor(m_strLoadSceneName, OnLoadingSceneLoaded, null));
+    }
+
 
     private void LoadLevel(string strLevelName, Action onSecenLoaded, bool isDestroyAuto = true)
     {

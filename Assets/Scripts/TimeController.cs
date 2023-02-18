@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class TimeController : MonoBehaviour
 {
+
+       
         private TMP_Text textTime;
         public int second = 120;
         public float totalTime;
@@ -12,7 +14,7 @@ public class TimeController : MonoBehaviour
         int S;
         private void Start()
         {
-            textTime = this.GetComponent<TMP_Text>();
+            textTime = this.transform.Find("Text").GetComponent<TMP_Text>();
         }
         private void Update()
         {
