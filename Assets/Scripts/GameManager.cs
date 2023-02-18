@@ -172,7 +172,9 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public void PassCheck()
     {
+        //停止画面，打开结算面板
         Time.timeScale = 0;
+        
         GameObject basePanel=GameObject.Find("BasePanel");
         GameObject PassMaskPanel = basePanel.transform.Find("PassMaskPanel").gameObject;
         PassMaskPanel.SetActive(true);
@@ -200,11 +202,17 @@ public class GameManager : Singleton<GameManager>
     {
         SaveByXML();
     }
+
+    /// <summary>
+    /// 将游戏进度写入XML，如玩家的最高分数
+    /// </summary>
     private void SaveByXML()
     {
+        
         Save save = createSaveGameObject();
         XmlDocument xmlDocument = new XmlDocument();
-        
+
+        //如果没有xml文件，新建xml文件，根节点是必须的
         if (!File.Exists(Application.dataPath + "/DataXML_level.text"))
         {
             XmlElement root = xmlDocument.CreateElement("Save");
@@ -213,22 +221,17 @@ public class GameManager : Singleton<GameManager>
             xmlDocument.Save(Application.dataPath + "/DataXML_level.text");
         }
 
-        //XmlNode rootNode = xmlDocument.FirstChild;
-        //test
-       /* XmlElement starElement = xmlDocument.CreateElement("star");
-        starElement.InnerText = save.star.ToString();
-        rootNode.AppendChild(starElement);*/
-
-        //xmlDocument.Save(Application.dataPath + "/DataXML_level.text");
-
+        //加载一下xml文件
         xmlDocument.Load(Application.dataPath + "/DataXML_level.text");
 
         
         #region CreateXML elements
 
-        
+        //找找关卡存档
         XmlNodeList levelNode = xmlDocument.GetElementsByTagName("level"+ save.level.ToString());
         
+        //当前是存档过的关卡，刷新一下记录
+        //TODO:根据最高来替换
         if (levelNode.Count>0)
         {
             Debug.Log("levelNode.Count>0  "+ levelNode.Count);
@@ -250,20 +253,19 @@ public class GameManager : Singleton<GameManager>
             }
             xmlDocument.Save(Application.dataPath + "/DataXML_level.text");
         }
+        //当前是未存档过的关卡，新建存档
         else
         {
-           
+           //找根节点
             XmlNode root = xmlDocument.SelectSingleNode("Save");
             Debug.Log("Roottttttttttt:" + root.Name);
 
+            //新建level,以及level的子节点：当前分数，星星
             XmlElement levelElement = xmlDocument.CreateElement("level" + save.level.ToString());
             
-
             XmlElement moneyElement = xmlDocument.CreateElement("money");
             moneyElement.InnerText = save.money.ToString();
             levelElement.AppendChild(moneyElement);
-
-            
 
             XmlElement starElement = xmlDocument.CreateElement("star");
             starElement.InnerText = save.star.ToString();
@@ -271,7 +273,7 @@ public class GameManager : Singleton<GameManager>
 
             root.AppendChild(levelElement);
 
-
+            //保存
             xmlDocument.Save(Application.dataPath + "/DataXML_level.text");
         }
 
@@ -283,6 +285,10 @@ public class GameManager : Singleton<GameManager>
 
 
 
+    /// <summary>
+    /// 从场景中获取要同步的游戏数据
+    /// </summary>
+    /// <returns>save实例</returns>
     private Save createSaveGameObject()
     {
         Save save = new Save();
@@ -294,12 +300,20 @@ public class GameManager : Singleton<GameManager>
         return save;
     }
 
+    /// <summary>
+    /// 加载游戏
+    /// </summary>
     public void LoadGame()
     {
         LoadByXML();
     }
+
+    /// <summary>
+    /// 读取XML，加载游戏进度，如玩家的最高分数
+    /// </summary>
     private void LoadByXML()
     {
+        //找到游戏进度文件
         if (File.Exists(Application.dataPath + "/DataXML_level.text"))
         {
 
@@ -307,7 +321,8 @@ public class GameManager : Singleton<GameManager>
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(Application.dataPath + "/DataXML_level.text");
 
-            XmlNodeList levelNodeList = xmlDocument.GetElementsByTagName("level" + save.level);
+            //通过关卡序号，找到XML中的节点,并将值传回save,同步给GameManager
+            XmlNodeList levelNodeList = xmlDocument.GetElementsByTagName("level" + save.level.ToString());
 
             Debug.Log("save.level"+ save.level);
 
